@@ -56,23 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function permissions(){
         return $this->belongsToMany('App\Models\Permission')->withTimestamps();
     }
-    public function specialities(){
-        return $this->belongsToMany('App\Models\Speciality')->withTimestamps();
+    public function boards(){
+        return $this->belongsToMany(Board::class);
     }
-    public function invoices(){
-        return $this->hasMany('App\Models\Invoice');
-    }
-    public function appointments(){
-        return $this->hasMany('App\Models\Appointment');
-    }
-    public function clinic_datas()
-    {
-        return $this->hasMany('App\Models\ClinicData');
-    }
-    public function clinic_notes()
-    {
-        return $this->hasMany('App\Models\ClinicNote');
-    }
+
     //almacenamiento
     public function store($request){
         $user = self::create($request->all());
