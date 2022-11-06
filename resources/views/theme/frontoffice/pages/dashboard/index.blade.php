@@ -62,6 +62,7 @@
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">{{$board->name}}<i class="material-icons right">more_vert</i></span>
                         <p>
+                            <a class="waves-effect waves-light btn-small" href="{{route('frontoffice.board.show',$board)}}">Continuar</a>
                             <a href="{{route('frontoffice.board.edit',$board)}}">Editar</a>
                             <a class="" href=""
                                onclick="event.preventDefault();
@@ -78,13 +79,18 @@
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Participantes<i class="material-icons right">close</i></span>
                         <ul class="collection with-header">
-                            <a href="#!" class="collection-item"><span class="badge">Invitado</span>Alan</a>
-                            <a href="#!" class="collection-item"><span class="new badge">Anfitrion</span>Alan</a>
-                            <a href="#!" class="collection-item">Alan</a>
-                            <a href="#!" class="collection-item"><span class="badge">14</span>Alan</a>
+
+                            @foreach($board->users as $user)
+                                @if(count($user->roles))
+                                    @if($user->roles->first()->name == "Anfitrion")
+                                        <a href="#!" class="collection-item"><span class="new badge">{{$user->roles->first()->name}}</span>{{$user->name}}</a>
+                                    @endif
+                                        <a href="#!" class="collection-item"><span class="badge">{{$user->roles->first()->name}}</span>{{$user->name}}</a>
+                                @endif
+                            @endforeach
                         </ul>
                         <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Invitar</a>
+                        <a class="btn-floating btn-large waves-effect waves-light red btn modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
                     </div>
                 </div>
                 <!-- Modal Structure -->
@@ -93,22 +99,20 @@
                         @csrf
                         <div class="modal-content">
                             <h4>Envia invitaciones</h4>
-                            <p>
                                 <div class="input-field col s12">
                                     <input id="email" type="email" class="validate" name="email">
                                     <label for="email">Email</label>
                                 </div>
-                                <h6>Permisos</h6>
-                                <p>
-                                    <select name="role">
-                                        <option value="" disabled selected>Seleciona un rol</option>
-                                        @foreach($roles as $role)
-                                            <option value="{{$role->id}}">{{$role->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </p>
 
-                            </p>
+                                <h6>Permisos</h6>
+                            <div class="input-field col s12">
+                                <select name="role">
+                                    @foreach($roles as $role)
+                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                    @endforeach
+                                        <label>Materialize Select</label>
+                                </select>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
@@ -129,6 +133,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.modal');
             var instances = M.Modal.init(elems);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
         });
     </script>
 @endsection

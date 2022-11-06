@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $user = auth()->user();
         return view('theme.frontoffice.pages.dashboard.index',[
             'boards' => $user->boards,
-            'roles' => Role::all()
+            'roles' => Role::all(),
         ]);
     }
 
