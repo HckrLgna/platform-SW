@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Board extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','link','path_img'];
+    protected $fillable = ['name','link','path_img','description'];
     //relations
     public function users(){
         return $this->belongsToMany(User::class);

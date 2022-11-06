@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BoardController extends Controller
 {
@@ -14,7 +16,7 @@ class BoardController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -35,7 +37,17 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $board = new Board();
+        $board->name = $request->input('name');
+        $board->link = "link";
+        $board->path_img = $request->input('path_img');
+        $board->description = $request->input('description');
+        $board->save();
+        DB::table('board_user')->insert([
+            'board_id' => $board->id,
+            'user_id' => auth()->user()->id,
+        ]);
+        return redirect()->route('frontoffice.board.show',$board);
     }
 
     /**
@@ -46,7 +58,7 @@ class BoardController extends Controller
      */
     public function show(Board $board)
     {
-        //
+        return view('theme.frontoffice.pages.board.show',$board);
     }
 
     /**
@@ -57,7 +69,11 @@ class BoardController extends Controller
      */
     public function edit(Board $board)
     {
-        //
+        return view('theme.frontoffice.pages.board.edit',[
+            'board'=>$board,
+            'users'=>$board->users,
+            'roles' => Role::all()
+        ]);
     }
 
     /**
@@ -69,7 +85,13 @@ class BoardController extends Controller
      */
     public function update(Request $request, Board $board)
     {
-        //
+        $boardN = Board::find($board->id);
+        $boardN->name = $request->input('name');
+        $boardN->description = $request->input('description');
+        $boardN->path_img = $request->input('path_img');
+        $boardN->save();
+        //actualizar permisos de usuarios
+        return redirect()->route('frontoffice.dashboard.index');
     }
 
     /**
@@ -80,6 +102,7 @@ class BoardController extends Controller
      */
     public function destroy(Board $board)
     {
-        //
+        $board->forceDelete();
+        return redirect()->route('frontoffice.dashboard.index');
     }
 }

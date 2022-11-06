@@ -25,6 +25,7 @@
         <!-- //////////////////////////////////////////////////////////////////////////// -->
         <!-- START CONTENT -->
         <section id="content">
+        @include('theme.frontoffice.layouts.includes.breadcrumb')
         <!--start container-->
             <div class="container">
                 @yield('content')

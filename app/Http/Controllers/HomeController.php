@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('theme.frontoffice.pages.dashboard.index');
+        return redirect()->route('frontoffice.dashboard.index');
     }
 }

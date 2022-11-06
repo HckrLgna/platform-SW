@@ -38,6 +38,9 @@ Route::group(['middleware' => ['auth'],'as' => 'backoffice.'],function (){
         ->name('user.permission_assignment');
 });
 
-Route::get('test',function (){
-    return view('theme.frontoffice.pages.board.index');
+
+Route::group(['middleware' => ['auth'],'as' => 'frontoffice.'],function (){
+    Route::get('dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+    Route::resource('board','App\Http\Controllers\BoardController');
+    Route::post('send-invitation','App\Http\Controllers\SendInvitationController@enviar')->name('send-invitation');
 });

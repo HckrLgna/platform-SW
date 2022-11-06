@@ -6,95 +6,129 @@
 @section('content')
         <div class="row">
             <div class="col s3">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                    <i class="material-icons right">send</i>
-                </button>
+                <!-- Modal Trigger -->
+                <button data-target="modalCreateBoard" class="btn modal-trigger">Modal</button>
             </div>
             <div class="col s8">
                 <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Search" />
             </div>
+            <!-- Modal Structure -->
+            <div id="modalCreateBoard" class="modal">
+                <div class="modal-content">
+                    <h4>Crear Tablero</h4>
+                    <div class="row">
+                        <form class="col s12" method="post" action="{{route('frontoffice.board.store')}}">
+                            @csrf
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input value="" id="name" type="text" class="validate" name="name">
+                                    <label class="active" for="name">Nombre del tablero</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
+                                    <label for="textarea1">Descripcion del tablero</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>File</span>
+                                        <input type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" name="path_img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Crear
+                                    <i class="material-icons right">create_new_folder</i>
+                                </button>
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="row">
+            @foreach($boards as $board)
             <div class="col s12 m6">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="https://materializecss.com/images/office.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Participantes<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">Editar</a> <a href="">Eliminar</a> </p>
+                        <span class="card-title activator grey-text text-darken-4">{{$board->name}}<i class="material-icons right">more_vert</i></span>
+                        <p>
+                            <a href="{{route('frontoffice.board.edit',$board)}}">Editar</a>
+                            <a class="" href=""
+                               onclick="event.preventDefault();
+                                                     document.getElementById('destroy-form').submit();">
+                                {{ __('Eliminar') }}
+                            </a>
+                            <form id="destroy-form" action="{{route('frontoffice.board.destroy',$board) }}" method="post" class="d-none">
+                                @method('delete')
+                                @csrf
+                            </form>
+                        </p>
+
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Participantes<i class="material-icons right">close</i></span>
                         <ul class="collection with-header">
-                            <a href="#!" class="collection-item"><span class="badge">1</span>Alan</a>
-                            <a href="#!" class="collection-item"><span class="new badge">4</span>Alan</a>
+                            <a href="#!" class="collection-item"><span class="badge">Invitado</span>Alan</a>
+                            <a href="#!" class="collection-item"><span class="new badge">Anfitrion</span>Alan</a>
                             <a href="#!" class="collection-item">Alan</a>
                             <a href="#!" class="collection-item"><span class="badge">14</span>Alan</a>
                         </ul>
                         <!-- Modal Trigger -->
-                        <button data-target="modal1" class="btn modal-trigger">Modal</button>
-                        <!-- Modal Structure -->
-                        <div id="modal1" class="modal">
-                            <div class="modal-content">
-                                <h4>Modal Header</h4>
-                                <p>A bunch of text</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                            </div>
+                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Invitar</a>
+                    </div>
+                </div>
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <form action="{{route('frontoffice.send-invitation')}}" method="post">
+                        @csrf
+                        <div class="modal-content">
+                            <h4>Envia invitaciones</h4>
+                            <p>
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate" name="email">
+                                    <label for="email">Email</label>
+                                </div>
+                                <h6>Permisos</h6>
+                                <p>
+                                    <select name="role">
+                                        <option value="" disabled selected>Seleciona un rol</option>
+                                        @foreach($roles as $role)
+                                            <option value="{{$role->id}}">{{$role->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </p>
+
+                            </p>
                         </div>
-                    </div>
+                        <div class="modal-footer">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="https://materializecss.com/images/office.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="https://materializecss.com/images/office.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="https://materializecss.com/images/office.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
 @endsection
 @section('foot')
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+    </script>
 @endsection
