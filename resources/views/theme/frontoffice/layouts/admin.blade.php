@@ -13,6 +13,9 @@
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START HEADER -->
 @include('theme.frontoffice.layouts.includes.header')
+<ul id="slide-out" class="sidenav">
+    @include('theme.frontoffice.layouts.includes.aside')
+</ul>
 <!-- END HEADER -->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START MAIN -->
@@ -22,20 +25,19 @@
     <div class="wrapper">
         <!-- START LEFT SIDEBAR NAV-->
         @include('theme.frontoffice.layouts.includes.leftsidebar')
-        @include('theme.frontoffice.layouts.includes.breadcrumb')
         <!-- END LEFT SIDEBAR NAV-->
         <!-- //////////////////////////////////////////////////////////////////////////// -->
         <!-- START CONTENT -->
         <section id="content">
 
         <!--start container-->
-            <div class="container">
+            <div class="container pt-2 pb-2">
                 @yield('content')
             </div>
             <!--end container-->
         </section>
         <!-- END CONTENT -->
-        @include('theme.frontoffice.layouts.includes.aside')
+
         <!-- START RIGHT SIDEBAR NAV-->
 
         <!-- END RIGHT SIDEBAR NAV-->

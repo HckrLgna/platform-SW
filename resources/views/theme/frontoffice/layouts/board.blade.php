@@ -12,12 +12,13 @@
 <!-- End Page Loading -->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START HEADER -->
-@include('theme.frontoffice.layouts.includes.header')
+    @include('theme.frontoffice.layouts.includes.header')
+    <ul id="slide-out" class="sidenav">
+        @include('theme.frontoffice.layouts.includes.aside')
+    </ul>
 <!-- END HEADER -->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START MAIN -->
-    @include('theme.frontoffice.layouts.includes.aside')
-
     @yield('content')
 
     <!-- START RIGHT SIDEBAR NAV-->
