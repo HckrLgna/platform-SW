@@ -107,16 +107,15 @@ class BoardController extends Controller
         return redirect()->route('frontoffice.dashboard.index');
     }
     public function addUserBoard($role_id,$board_id){
-        dd($board_id);
         $user= auth()->user();
         if ($user){
             try {
                 DB::table('board_user')->insert([
-                    'board_id' => $board->id,
+                    'board_id' => $board_id,
                     'user_id' => $user->id,
                 ]);
                 DB::table('board_user')->insert([
-                    'role_id' => $role->id,
+                    'role_id' => $role_id,
                     'user_id' => $user->id,
                 ]);
             }catch (Exception $exception){
