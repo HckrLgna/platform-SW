@@ -14,10 +14,12 @@ class SendInvitationController extends Controller
         return $request;
     }
     public function enviar(Request $request, Board $board){
-        $role= Role::find($request->role);
+        $role= $request->role_id;
         $to = $request->input('email');
+        $url_path = 'http://54.165.5.148/add-user-board/'.$role.'/'.$board->id.'/send';
+        dd($url_path);
         $data = [
-            'link' => 'http://54.165.5.148/add-user-board/'.$role.'/'.$board,
+            'link' => $url_path,
             'role' => $role,
             'board' => $board,
         ];
