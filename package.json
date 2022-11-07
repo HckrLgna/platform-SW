@@ -12,9 +12,10 @@
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
         "axios": "^0.21",
+        "jquery": "^3.6.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "materialize-css": "^1.0.0",
+        "materialize-css": "^1.0.0-rc.2",
         "postcss": "^8.1.14",
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.32.11",

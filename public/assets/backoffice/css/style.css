@@ -2657,8 +2657,8 @@ select {
 
 #left-sidebar-nav {
   position: fixed;
-  width: 100px;
-  left: 180px;
+  width: 200px;
+  left: 0px;
   z-index: 999;
   height: auto;
 }

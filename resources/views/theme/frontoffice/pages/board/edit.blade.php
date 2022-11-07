@@ -2,8 +2,8 @@
 @section('title','pagina demo')
 @section('head')
 @endsection
-@section('breadcrumb')
-    <li><a href="">edit</a>
+@section('breadcrumbs')
+    <li><a href="">Editar</a>
     </li>
 @endsection
 @section('content')

@@ -17,15 +17,17 @@
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START MAIN -->
 <div id="main">
+
     <!-- START WRAPPER -->
     <div class="wrapper">
         <!-- START LEFT SIDEBAR NAV-->
-    @include('theme.frontoffice.layouts.includes.leftsidebar')
-    <!-- END LEFT SIDEBAR NAV-->
+        @include('theme.frontoffice.layouts.includes.leftsidebar')
+        @include('theme.frontoffice.layouts.includes.breadcrumb')
+        <!-- END LEFT SIDEBAR NAV-->
         <!-- //////////////////////////////////////////////////////////////////////////// -->
         <!-- START CONTENT -->
         <section id="content">
-        @include('theme.frontoffice.layouts.includes.breadcrumb')
+
         <!--start container-->
             <div class="container">
                 @yield('content')

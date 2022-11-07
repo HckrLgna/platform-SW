@@ -26,6 +26,7 @@
     </div>
 @endsection
 @section('foot')
+    <script  src="{{asset('/assets/backoffice/js/materialize.min.js')}}"></script>
     <script src="{{ asset('/assets/frontoffice/js/jquery.js') }}"></script>
     <script src="{{ asset('/assets/frontoffice/js/lodash.js') }}"></script>
     <script src="{{ asset('/assets/frontoffice/js/backbone.js') }}"></script>
