@@ -14,9 +14,9 @@ class SendInvitationController extends Controller
         return $request;
     }
     public function enviar(Request $request, Board $board){
-        $role= $request->role_id;
+        $role_id= $request->role_id;
         $to = $request->input('email');
-        $url_path = 'http://54.165.5.148/add-user-board/'.$role.'/'.$board->id.'/send';
+        $url_path = 'http://54.165.5.148/add-user-board/'.$role_id.'/'.$board->id.'/send';
         dd($url_path);
         $data = [
             'link' => $url_path,

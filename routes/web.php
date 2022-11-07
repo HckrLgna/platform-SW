@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth'],'as' => 'backoffice.'],function (){
 Route::group(['middleware' => ['auth'],'as' => 'frontoffice.'],function (){
     Route::get('dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('board','App\Http\Controllers\BoardController');
-    Route::get('add-user-board/{role}/{board}/send','App\Http\Controllers\BoardController@addUserBoard')->name('board.add-user');
+    Route::get('add-user-board/{role_id?}/{board_id?}/send','App\Http\Controllers\BoardController@addUserBoard')->name('board.add-user');
     Route::post('send-invitation/{board}/','App\Http\Controllers\SendInvitationController@enviar')->name('send-invitation');
 
 });

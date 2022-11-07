@@ -7,7 +7,6 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Exception;
-use Ramsey\Uuid\Type\Integer;
 
 class BoardController extends Controller
 {
@@ -107,16 +106,17 @@ class BoardController extends Controller
         $board->forceDelete();
         return redirect()->route('frontoffice.dashboard.index');
     }
-    public function addUserBoard(Integer $board_id,Integer $role_id){
+    public function addUserBoard($role_id,$board_id){
+        dd($board_id);
         $user= auth()->user();
         if ($user){
             try {
                 DB::table('board_user')->insert([
-                    'board_id' => $board_id,
+                    'board_id' => $board->id,
                     'user_id' => $user->id,
                 ]);
                 DB::table('board_user')->insert([
-                    'role_id' => $role_id,
+                    'role_id' => $role->id,
                     'user_id' => $user->id,
                 ]);
             }catch (Exception $exception){
