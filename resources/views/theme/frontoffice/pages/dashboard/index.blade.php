@@ -95,7 +95,7 @@
                 </div>
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal">
-                    <form action="{{route('frontoffice.send-invitation')}}" method="post">
+                    <form action="{{route('frontoffice.send-invitation',$board)}}" method="post">
                         @csrf
                         <div class="modal-content">
                             <h4>Envia invitaciones</h4>
@@ -105,14 +105,14 @@
                                 </div>
 
                                 <h6>Permisos</h6>
-                            <div class="input-field col s12">
-                                <select name="role">
-                                    @foreach($roles as $role)
-                                        <option value="{{$role->id}}">{{$role->name}}</option>
-                                    @endforeach
-                                        <label>Materialize Select</label>
-                                </select>
-                            </div>
+                                <div class="input-field col s12">
+                                    <select name="role_id">
+                                        @foreach($roles as $role)
+                                            <option value="{{$role->id}}" name="role_id">{{$role->name}}</option>
+                                        @endforeach
+                                            <label>Materialize Select</label>
+                                    </select>
+                                </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn waves-effect waves-light" type="submit" name="action">Enviar

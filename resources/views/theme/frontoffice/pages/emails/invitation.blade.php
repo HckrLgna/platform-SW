@@ -1,1 +1,1 @@
-Participa de nuestro proyecto <a href="localhost:8000/">link</a>
+Participa de nuestro proyecto {{$board->name}} <a href="{{$link}}">{{$link}}</a>

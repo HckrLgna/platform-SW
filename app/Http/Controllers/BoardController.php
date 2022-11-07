@@ -6,6 +6,7 @@ use App\Models\Board;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Exception;
 
 class BoardController extends Controller
 {
@@ -103,6 +104,24 @@ class BoardController extends Controller
     public function destroy(Board $board)
     {
         $board->forceDelete();
+        return redirect()->route('frontoffice.dashboard.index');
+    }
+    public function addUserBoard(Board $board,Role $role){
+        $user= auth()->user();
+        if ($user){
+            try {
+                DB::table('board_user')->insert([
+                    'board_id' => $board->id,
+                    'user_id' => $user->id,
+                ]);
+                DB::table('board_user')->insert([
+                    'role_id' => $role->id,
+                    'user_id' => $user->id,
+                ]);
+            }catch (Exception $exception){
+                return $exception;
+            }
+        }
         return redirect()->route('frontoffice.dashboard.index');
     }
 }
