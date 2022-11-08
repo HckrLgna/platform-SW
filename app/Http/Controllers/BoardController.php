@@ -38,16 +38,28 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        $board = new Board();
-        $board->name = $request->input('name');
-        $board->link = "link";
-        $board->path_img = $request->input('path_img');
-        $board->description = $request->input('description');
-        $board->save();
-        DB::table('board_user')->insert([
-            'board_id' => $board->id,
-            'user_id' => auth()->user()->id,
-        ]);
+        try {
+            $user = auth()->user();
+            $board = new Board();
+            $board->name = $request->input('name');
+            $board->link = "link";
+            $board->path_img = $request->input('path_img');
+            $board->description = $request->input('description');
+            $board->save();
+
+            DB::table('board_user')->insert([
+                'board_id' => $board->id,
+                'user_id' => $user->id,
+            ]);
+            DB::table('role_user')->insert([
+                'role_id' => 2,
+                'user_id' => $user->id,
+                'board_user_id'=> $board->id,
+            ]);
+        }catch (Exception $exception){
+            return $exception;
+        }
+
         return redirect()->route('frontoffice.board.show',$board);
     }
 
@@ -114,9 +126,10 @@ class BoardController extends Controller
                     'board_id' => $board_id,
                     'user_id' => $user->id,
                 ]);
-                DB::table('board_user')->insert([
+                DB::table('role_user')->insert([
                     'role_id' => $role_id,
                     'user_id' => $user->id,
+                    'board_user_id'=> $board_id,
                 ]);
             }catch (Exception $exception){
                 return $exception;
