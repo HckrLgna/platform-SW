@@ -71,7 +71,9 @@ class BoardController extends Controller
      */
     public function show(Board $board)
     {
-        return view('theme.frontoffice.pages.board.show',$board);
+        return view('theme.frontoffice.pages.board.show',[
+            'board' => $board
+        ]);
     }
 
     /**

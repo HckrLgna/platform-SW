@@ -84,8 +84,9 @@
                                 @if(count($user->roles))
                                     @if($user->roles->first()->name == "Anfitrion")
                                         <a href="#!" class="collection-item"><span class="new badge">{{$user->roles->first()->name}}</span>{{$user->name}}</a>
-                                    @endif
+                                    @else
                                         <a href="#!" class="collection-item"><span class="badge">{{$user->roles->first()->name}}</span>{{$user->name}}</a>
+                                    @endif
                                 @endif
                             @endforeach
                         </ul>
