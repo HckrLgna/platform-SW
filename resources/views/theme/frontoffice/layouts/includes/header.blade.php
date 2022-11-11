@@ -16,26 +16,29 @@
 
                 <ul class="right hide-on-med-and-down">
                     <li>
+                        <span>Bienvenid@ {{auth()->user()->name}}</span>
+                    </li>
+                    <li>
                         <a href="#" class="dropdown-trigger waves-effect waves-block waves-light profile-button" data-target="dropdown1">
                           <span class="avatar-status avatar-online">
-                            <img src="{{asset('/images/avatar/avatar-7.png')}}" alt="avatar">
+                            <img src="{{auth()->user()->profile_path}}" alt="avatar">
                             <i></i>
                           </span>
                         </a>
                     </li>
-
                 </ul>
                 <!-- profile-dropdown -->
                 <ul id="dropdown1" class="dropdown-content">
                     <li>
                         <a href="#" data-target="slide-out" class="sidenav-trigger grey-text text-darken-1">
-                            <i class="material-icons">face</i> Profile
+                            <span>Profile</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}" class="grey-text text-darken-1" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                            <i class="material-icons">keyboard_tab</i> Logout</a>
+                            <span>Logout</span>
+                        </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>

@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use phpDocumentor\Reflection\Types\Self_;
 use phpDocumentor\Reflection\Types\True_;
+use Ramsey\Uuid\Type\Integer;
 use function PHPUnit\Framework\isNull;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,8 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
-        'dob',
         'password',
+        'profile_path',
     ];
 
     /**
@@ -40,7 +41,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
-    protected $dates = ['dob'];
     /**
      * The attributes that should be cast.
      *
@@ -59,14 +59,23 @@ class User extends Authenticatable implements MustVerifyEmail
     public function boards(){
         return $this->belongsToMany(Board::class);
     }
+    public function chats()
+    {
+        return $this->belongsToMany('App\Models\Chat');
+    }
+    public function messages() {
+        return $this->hasMany('App\Models\Message');
+    }
 
     //almacenamiento
     public function store($request){
+        $profile_path = 'images/avatar/avatar-'.random_int(1,17).'.png';
         $user = self::create($request->all());
+        $user->update(['profile_path' => $profile_path]) ;
         $user->update(['password'=>Hash::make($request->password)]);
+
         $roles = [$request->role];
         $user->role_assignment(null,$roles);
-        alert('Exito','Usuario creado con exito','succes');
         return $user;
     }
     public function my_update($request){
@@ -89,6 +98,16 @@ class User extends Authenticatable implements MustVerifyEmail
             return false;
         }
     }
+    public function is_invitado()
+    {
+        $invitado = config('app.invitado_role');
+        if ($this->has_role($invitado)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function has_role($id)
     {
         $flag =false;
@@ -220,21 +239,5 @@ class User extends Authenticatable implements MustVerifyEmail
         }else{
             return 'frontoffice.user.profile';
         }
-    }
-
-    public function clinic_data_array()
-    {
-        $datas = $this->clinic_datas->pluck('value','key')->toArray();
-        return $datas;
-    }
-    public function clinic_data($key, $array = null, $default = null)
-    {
-        $array = (!is_null($array)) ? $array : $this->clinic_data_array();
-        if(array_key_exists($key, $array)){
-            $value = $array[$key];
-        }else{
-            $value = $default;
-        }
-        return $value;
     }
 }

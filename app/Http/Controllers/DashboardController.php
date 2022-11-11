@@ -16,9 +16,15 @@ class DashboardController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $boards = $user->boards;
+        $users_chat = [];
+        foreach ($boards as $board){
+            $users_chat = $board->users;
+        }
         return view('theme.frontoffice.pages.dashboard.index',[
             'boards' => $user->boards,
             'roles' => Role::all(),
+            'users_chat' => $users_chat
         ]);
     }
 

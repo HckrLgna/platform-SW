@@ -64,10 +64,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $profile_path = 'images/avatar/avatar-'.random_int(1,17).'.png';
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'profile_path'=>$profile_path
         ]);
     }
 }

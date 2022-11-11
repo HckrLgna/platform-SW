@@ -2,6 +2,11 @@
 
 return [
 
+    'admin_role' => env('ADMIN_ROLE','administrador'),
+    'anfitrion_role' => env('PATIENT_ROLE','anfitrion'),
+    'colaborador_role' => env('DOCTOR_ROLE','colaborador'),
+    'invitado_role' => env('SECRETARY_ROLE','invitado'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -171,7 +176,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 

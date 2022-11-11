@@ -100,15 +100,21 @@
                 </div>
                 <div id="chatapp" class="col s12">
                     <div class="collection border-none">
-                        @foreach($board->users as $user)
-                        <a href="#!" class="collection-item avatar border-none">
-                            <img src="images/avatar/avatar-1.png" alt="" class="circle cyan">
-                            <span class="line-height-0">{{$user->name}} </span>
-                            <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>
-                            <p class="medium-small blue-grey-text text-lighten-3">Thank you </p>
-                        </a>
-                        @endforeach
-
+                        <h6 class="mt-5 mb-3 ml-3">Salas de chat</h6>
+                        @if(auth()->user()->boards)
+                            @foreach(auth()->user()->boards as $board)
+                                @foreach($board->users as $user  )
+                                    @if($user->id != auth()->user()->id)
+                                        <a href="{{route('chat.with', $user)}}" class="collection-item avatar border-none">
+                                            <img src="images/avatar/avatar-1.png" alt="" class="circle cyan">
+                                            <span class="line-height-0">{{$user->name}} </span>
+                                            <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>
+                                            <p class="medium-small blue-grey-text text-lighten-3">Thank you </p>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div id="activity" class="col s12">
@@ -189,4 +195,5 @@
             </div>
         </li>
     </ul>
+
 </aside>

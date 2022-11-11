@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -46,3 +47,28 @@ Route::group(['middleware' => ['auth'],'as' => 'frontoffice.'],function (){
     Route::post('send-invitation/{board}/','App\Http\Controllers\SendInvitationController@enviar')->name('send-invitation');
 
 });
+
+Route::get('auth/user', function () {
+
+    if(auth()->check()){
+
+        return response()->json([
+            'authUser' => auth()->user()
+        ]);
+
+        return null;
+
+    }
+
+});
+
+Route::get('chat/{chat}', 'App\Http\Controllers\ChatController@show')->name('chat.show');
+
+Route::get('chat/with/{user}', 'App\Http\Controllers\ChatController@chat_with')->name('chat.with');
+
+Route::get('chat/{chat}/get_users', 'App\Http\Controllers\ChatController@get_users')->name('chat.get_users');
+
+Route::get('chat/{chat}/get_messages', 'App\Http\Controllers\ChatController@get_messages')->name('chat.get_messages');
+
+Route::post('message/sent', '\App\Http\Controllers\MessageController@sent')->name('message.sent');
+

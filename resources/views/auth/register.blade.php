@@ -2,12 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row padding-5 ">
+        <div class="col m6 width-50 right-align ">
+            <img src="https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="">
+        </div>
+        <div class="col m6 width-50 ">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header padding-5"><h5>Registrate</h5></div>
 
-                <div class="card-body">
+                <div class="card-content">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

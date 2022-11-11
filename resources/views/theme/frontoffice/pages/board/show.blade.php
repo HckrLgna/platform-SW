@@ -1,12 +1,13 @@
 @extends('theme.frontoffice.layouts.board')
 @section('title','Board')
 @section('head')
-    <link rel="stylesheet" href="{{ asset('/assets/frontoffice/css/rappid.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/frontoffice/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/frontoffice/css/theme-picker.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/frontoffice/css/style.dark.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/frontoffice/css/style.material.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/frontoffice/css/style.modern.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rappid.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme-picker.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/style.dark.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.material.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.modern.css') }}">
 @endsection
 
 @section('content')
@@ -26,28 +27,23 @@
     </div>
 @endsection
 @section('foot')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            M.AutoInit();
-        });
-    </script>
-    <script src="{{ asset('/assets/frontoffice/js/jquery.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/lodash.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/backbone.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/graphlib.core.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/dagre.core.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/rappid.js') }}"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/lodash.js') }}"></script>
+    <script src="{{ asset('js/backbone.js') }}"></script>
+    <script src="{{ asset('js/graphlib.core.js') }}"></script>
+    <script src="{{ asset('js/dagre.core.js') }}"></script>
+    <script src="{{ asset('js/rappid.js') }}"></script>
 
-    <script src="{{ asset('/assets/frontoffice/js/config/halo.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/config/selection.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/config/inspector.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/config/stencil.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/config/toolbar.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/config/sample-graphs.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/views/main.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/views/theme-picker.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/models/joint.shapes.app.js') }}"></script>
-    <script src="{{ asset('/assets/frontoffice/js/views/navigator.js') }}"></script>
+    <script src="{{ asset('js/config/halo.js') }}"></script>
+    <script src="{{ asset('js/config/selection.js') }}"></script>
+    <script src="{{ asset('js/config/inspector.js') }}"></script>
+    <script src="{{ asset('js/config/stencil.js') }}"></script>
+    <script src="{{ asset('js/config/toolbar.js') }}"></script>
+    <script src="{{ asset('js/config/sample-graphs.js') }}"></script>
+    <script src="{{ asset('js/views/main.js') }}"></script>
+    <script src="{{ asset('js/views/theme-picker.js') }}"></script>
+    <script src="{{ asset('js/models/joint.shapes.app.js') }}"></script>
+    <script src="{{ asset('js/views/navigator.js') }}"></script>
     <script>
         joint.setTheme('modern');
         app = new App.MainView({
