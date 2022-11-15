@@ -2,7 +2,7 @@
 
 Copyright (c) 2022 client IO
 
- 2022-10-13 
+ 2022-10-13
 
 
 This Source Code Form is subject to the terms of the JointJS+ Trial License
@@ -468,7 +468,6 @@ var App = window.App || {};
         exportStylesheet: '.scalable * { vector-effect: non-scaling-stroke }',
 
         openAsSVG: function() {
-
             var paper = this.paper;
             paper.hideTools().toSVG(function(svg) {
                 new joint.ui.Lightbox({
@@ -486,7 +485,6 @@ var App = window.App || {};
         },
 
         openAsPNG: function() {
-
             var paper = this.paper;
             paper.hideTools().toPNG(function(dataURL) {
                 new joint.ui.Lightbox({

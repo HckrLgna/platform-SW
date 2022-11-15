@@ -15,10 +15,10 @@ class CreateBoardsTable extends Migration
     {
         Schema::create('boards', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('link');
-            $table->string('path_img');
-            $table->string('description');
+            $table->string('name')->nullable();
+            $table->string('link')->nullable();
+            $table->string('path_img')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

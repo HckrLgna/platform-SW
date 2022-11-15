@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/chat.css">
+    <link rel="stylesheet" href= {{asset('css/app.css')}}>
+    <link rel="stylesheet" href="{{asset('css/chat.css')}} ">
 @endsection
 
 @section('content')
@@ -40,7 +40,7 @@
 @endsection
 @section('foot')
     <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
-    <script  src="/js/app.js"></script>
-    <script  src="/js/chat.js"></script>
+    <script  src= " /js/app.js"></script>
+    <script  src= "/js/chat.js"></script>
 
 @endsection

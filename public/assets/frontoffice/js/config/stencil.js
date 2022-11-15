@@ -2,7 +2,7 @@
 
 Copyright (c) 2022 client IO
 
- 2022-10-13 
+ 2022-10-13
 
 
 This Source Code Form is subject to the terms of the JointJS+ Trial License
@@ -223,7 +223,7 @@ App.config = App.config || {};
                     dataTooltipPositionSelector: '.joint-stencil'
                 },
                 image: {
-                    xlinkHref: 'assets/image-icon1.svg'
+                    xlinkHref: '/../../assets/image-icon1.svg'
                 },
                 body: {
                     fill: 'transparent',

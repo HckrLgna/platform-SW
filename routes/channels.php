@@ -21,3 +21,8 @@ Broadcast::channel('chat.{chat_id}', function ($user, $chat_id) {
         return $user;
     }
 });
+Broadcast::channel('board.{board_id}', function ($user, $board_id) {
+    if ($user->boards->contains($board_id)) {
+        return $user;
+    }
+});

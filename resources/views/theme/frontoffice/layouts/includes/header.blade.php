@@ -21,7 +21,7 @@
                     <li>
                         <a href="#" class="dropdown-trigger waves-effect waves-block waves-light profile-button" data-target="dropdown1">
                           <span class="avatar-status avatar-online">
-                            <img src="{{auth()->user()->profile_path}}" alt="avatar">
+                            <img src="{{asset(auth()->user()->profile_path)}}" alt="avatar">
                             <i></i>
                           </span>
                         </a>

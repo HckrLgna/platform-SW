@@ -106,7 +106,7 @@
                                 @foreach($board->users as $user  )
                                     @if($user->id != auth()->user()->id)
                                         <a href="{{route('chat.with', $user)}}" class="collection-item avatar border-none">
-                                            <img src="images/avatar/avatar-1.png" alt="" class="circle cyan">
+                                            <img src="{{asset($user->profile_path)}} " alt="" class="circle cyan">
                                             <span class="line-height-0">{{$user->name}} </span>
                                             <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>
                                             <p class="medium-small blue-grey-text text-lighten-3">Thank you </p>

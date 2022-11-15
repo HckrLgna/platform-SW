@@ -1,6 +1,7 @@
 @extends('theme.frontoffice.layouts.board')
 @section('title','Board')
 @section('head')
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="{{ asset('css/rappid.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/theme-picker.css') }}">
@@ -11,6 +12,9 @@
 @endsection
 
 @section('content')
+    <form class="form">
+        <button type="submit" class="msger-send-btn">Send</button>
+    </form>
     <div id="app">
         <div class="app-header">
             <div class="app-title">
@@ -57,24 +61,7 @@
             app.graph.fromJSON(JSON.parse(App.config.sampleGraphs.emergencyProcedure));
         });
     </script>
-    <!-- Local file warning: -->
-    <div id="message-fs" style="display: none;">
-        <p>The application was open locally using the file protocol. It is recommended to access it trough a <b>Web
-                server</b>.</p>
-        <p>Please see <a href="README.md">instructions</a>.</p>
-    </div>
-    <script>
-        (function() {
-            var fs = (document.location.protocol === 'file:');
-            var ff = (navigator.userAgent.toLowerCase().indexOf('firefox') !== -1);
-            if (fs && !ff) {
-                (new joint.ui.Dialog({
-                    width: 300,
-                    type: 'alert',
-                    title: 'Local File',
-                    content: $('#message-fs').show()
-                })).open();
-            }
-        })();
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    <script  src="/js/app.js"></script>
+    <script  src="/js/board.js"></script>
 @endsection

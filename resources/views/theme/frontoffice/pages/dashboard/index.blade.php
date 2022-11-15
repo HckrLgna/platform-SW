@@ -92,7 +92,7 @@
                             @endforeach
                         </ul>
                         <!-- Modal Trigger -->
-                        @if(auth()->user()->is_anfitrion)
+                        @if($user->roles->first()->name == "Anfitrion")
                             <a class="btn-floating btn-large waves-effect waves-light red btn modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
                         @endif
                     </div>

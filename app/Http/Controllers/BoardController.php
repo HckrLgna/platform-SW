@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BoardUpdate;
 use App\Models\Board;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Exception;
 
 class BoardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,6 @@ class BoardController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -71,6 +76,7 @@ class BoardController extends Controller
      */
     public function show(Board $board)
     {
+        abort_unless($board->users->contains(auth()->id()), 403);
         return view('theme.frontoffice.pages.board.show',[
             'board' => $board
         ]);
@@ -138,5 +144,39 @@ class BoardController extends Controller
             }
         }
         return redirect()->route('frontoffice.dashboard.index');
+    }
+    public function boardUpdateOnline(Request $request){
+        $board = Board::find($this);
+        $board->save();
+        return $board;
+    }
+    public function board_with(User $user)
+    {
+        $user_a = auth()->user();
+        $user_b = $user;
+	    $board = $user_a->boards()->whereHas('users', function ($q) use ($user_b) {
+        $q->where('board_user.user_id', $user_b->id);
+    })->first();
+	if(!$board)
+    {
+        $board = \App\Models\Board::create([]);
+        $board->users()->sync([$user_a->id, $user_b->id]);
+    }
+        return redirect()->route('board.show', $board);
+    }
+    public function get_users(Board $board)
+    {
+        $users = $board->users;
+        return response()->json([
+            'users' => $users
+        ]);
+    }
+
+    public function get_models(Board $board)
+    {
+        $models = $board->models()->with('user')->get();
+        return response()->json([
+            'models' => $models
+        ]);
     }
 }
