@@ -14,14 +14,16 @@
                 </ol>
             </div>
             <div class="col s2 m6 l6">
-                <a class="btn dropdown-settings waves-effect waves-light breadcrumbs-btn right" href="#!" data-activates="dropdown1">
-                    <i class="material-icons hide-on-med-and-up">settings</i>
+                <!-- Dropdown Trigger -->
+                <a class='dropdown-trigger btn  waves-effect waves-light breadcrumbs-btn right' href='#' data-target='dropdown2'><i class="material-icons hide-on-med-and-up">settings</i>
                     <span class="hide-on-small-onl">Acciones</span>
                     <i class="material-icons right">arrow_drop_down</i>
-                </a><ul id="dropdown1" class="dropdown-content">
+                </a>
+
+                <!-- Dropdown Structure -->
+                <ul id='dropdown2' class='dropdown-content'>
                     @yield('dropdown_settings')
                 </ul>
-
             </div>
         </div>
     </div>

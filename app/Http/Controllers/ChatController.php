@@ -37,7 +37,7 @@ class ChatController extends Controller
             }
         }
 
-        return redirect()->route('chat.show', $chat);
+        return redirect()->route('frontoffice.dashboard.index', $chat);
     }
     public function get_users(Chat $chat)
     {

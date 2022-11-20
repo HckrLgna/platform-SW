@@ -1,15 +1,15 @@
 @extends('theme.backoffice.layouts.admin')
-@section('title','Asignar Especialidades')
+@section('title','Asignar Tableros')
 @section('head')
 @endsection
 @section('breadcrumbs')
     <li><a href="{{route('backoffice.user.index')}}">Usuarios del Sistema</a></li>
     <li><a href="{{route('backoffice.user.show',$user)}}">{{$user->name}}</a></li>
-    <li><a href="" class="active">Asignar especialidades</a> </li>
+    <li><a href="" class="active">Asignar tableros</a> </li>
 @endsection
 @section('content')
     <div class="section">
-        <p class="caption">Selecciona las especialidades que desea asignar</p>
+        <p class="caption">Selecciona los tableros que desea asignar</p>
         <div class="divider"></div>
         <div class="section">
             <div class="row">
@@ -18,21 +18,21 @@
                         <div class="card-content">
                             <span class="card-title">Asignar especialidades</span>
                             <div class="row">
-                                <form class="col s12 m8 offset-m2" method="post" action="{{route('backoffice.user.speciality_assignment',$user)}}">
+                                <form class="col s12 m8 offset-m2" method="post" action="{{route('backoffice.user.board_assignment',$user)}}">
                                     {{csrf_field()}}
+                                    @foreach($roles as $role)
+                                        <ul>{{$role->name}}</ul>
+                                            @foreach($boards as $board)
+                                                <li>
+                                                    <label for="{{$board->id}}">
+                                                        <input type="checkbox" id="{{$board->id}}" name="boards[]" value="{{$board->id}}"
+                                                               @if($user->has_board($board->id)) checked @endif
+                                                        />
+                                                        <span>{{$board->name}}</span>
+                                                    </label>
+                                                </li>
+                                            @endforeach
 
-                                    @foreach($specialities as $speciality)
-                                        <p>
-                                            <input type="checkbox" id="{{$speciality->id}}"
-                                                   name="specialities[]"
-                                                   value="{{$speciality->id}}"
-                                                   @if( $user->has_speciality($speciality->id) )
-                                                        checked
-                                                    @endif/>
-                                            <label for="{{$speciality->id}}">
-                                                <span>{{$speciality->name}}</span>
-                                            </label>
-                                        </p>
                                     @endforeach
                                     <div class="row">
                                         <div class="input-field col s12">

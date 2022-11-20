@@ -10,7 +10,6 @@ This Source Code Form is subject to the terms of the JointJS+ Trial License
 file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the JointJS+ archive as was distributed by client IO. See the LICENSE file.*/
 
-
 var App = window.App || {};
 
 (function(_, joint) {
@@ -240,7 +239,8 @@ var App = window.App || {};
                 if (this.selection.collection.has(cell)) {
                     this.selection.collection.reset(this.selection.collection.models.filter(c => c !== cell));
                 }
-
+                btn.click();
+                console.log('BotonCargar.click();');
             }, this);
 
             this.selection.on('selection-box:pointerdown', function(elementView, evt) {
@@ -267,10 +267,14 @@ var App = window.App || {};
                 var primaryCellView = paper.requireView(primaryCell);
                 selection.destroySelectionBox(primaryCell);
                 this.selectPrimaryCell(primaryCellView);
+                    btn.click();
+                    console.log('onselection Change body');
             } else if (collection.length === 2) {
                 collection.each(function(cell) {
                     selection.createSelectionBox(cell);
                 });
+                btn.click();
+                console.log('onselectionChange 2');
             }
         },
 
@@ -323,7 +327,6 @@ var App = window.App || {};
         },
 
         createInspector: function(cell) {
-
             return joint.ui.Inspector.create('.inspector-container', _.extend({
                 cell: cell
             }, App.config.inspector[cell.get('type')]));
@@ -368,7 +371,6 @@ var App = window.App || {};
             }, this);
 
             this.graph.on('change', function(cell, opt) {
-
                 if (!cell.isLink() || !opt.inspector) return;
 
                 var ns = joint.linkTools;
@@ -437,13 +439,14 @@ var App = window.App || {};
         },
 
         applyOnSelection: function(method) {
+            console.log('aply on select');
             this.graph.startBatch('selection');
             this.selection.collection.models.forEach(function(model) { model[method](); });
             this.graph.stopBatch('selection');
+
         },
 
         changeSnapLines: function(checked) {
-
             if (checked) {
                 this.snaplines.startListening();
                 this.stencil.options.snaplines = this.snaplines;
@@ -451,6 +454,7 @@ var App = window.App || {};
                 this.snaplines.stopListening();
                 this.stencil.options.snaplines = null;
             }
+
         },
 
         initializeTooltips: function() {
@@ -468,6 +472,7 @@ var App = window.App || {};
         exportStylesheet: '.scalable * { vector-effect: non-scaling-stroke }',
 
         openAsSVG: function() {
+
             var paper = this.paper;
             paper.hideTools().toSVG(function(svg) {
                 new joint.ui.Lightbox({
@@ -485,6 +490,7 @@ var App = window.App || {};
         },
 
         openAsPNG: function() {
+
             var paper = this.paper;
             paper.hideTools().toPNG(function(dataURL) {
                 new joint.ui.Lightbox({

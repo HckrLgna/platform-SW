@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use phpDocumentor\Reflection\Types\Self_;
 use phpDocumentor\Reflection\Types\True_;
@@ -89,7 +90,6 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->permission_mass_assignment($roles);
         $this->roles()->sync($roles);
         $this->verify_permission_integrity($roles);
-
     }
 
     public function is_admin()
@@ -110,6 +110,15 @@ class User extends Authenticatable implements MustVerifyEmail
             return false;
         }
     }
+    public function is_anfitrion()
+    {
+        $anfitrion = config('app.anfitrion_role');
+        if ($this->has_role($anfitrion)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public function has_role($id)
     {
@@ -121,6 +130,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return $flag;
     }
+
     public function has_permission($id)
     {
         $flag=false;
@@ -131,22 +141,12 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return $flag;
     }
-    public function has_speciality($id){
+    public function has_board($id){
         $flag = false;
-        foreach ($this->specialities as $speciality){
-            if ($speciality->id == $id) $flag = true;
+        foreach ($this->boards as $board){
+            if ($board->id == $id) $flag = true;
         }
         return $flag;
-    }
-    public function age(){
-        if (!is_null($this->dob)){
-            $age = $this->dob->age;
-            $years = ($age ==1 )? 'año' : 'años';
-            $msj = $age . ' ' . $years;
-        }else{
-            $msj = 'indefinido';
-        }
-        return $msj;
     }
     public function visible_users(){
         $users = self::all();
@@ -210,11 +210,6 @@ class User extends Authenticatable implements MustVerifyEmail
         $string =implode(',',$roles);
         return $string;
     }
-    public function list_specialities(){
-        $specialities= $this->specialities->pluck('name')->toArray();
-        $string = implode(',',$specialities);
-        return $string;
-    }
 
     //vistas
     public function edit_view($view = null){
@@ -242,5 +237,13 @@ class User extends Authenticatable implements MustVerifyEmail
         }else{
             return 'frontoffice.user.profile';
         }
+    }
+    public function get_role_board($id,$board_id)
+    {
+        $res = DB::table('role_user')
+                    ->where('board_id','=',$board_id)
+                    ->where('user_id','=',$id)
+                    ->first();
+        return Role::find($res->role_id);
     }
 }

@@ -2,7 +2,7 @@
 
 Copyright (c) 2022 client IO
 
- 2022-10-13 
+ 2022-10-13
 
 
 This Source Code Form is subject to the terms of the JointJS+ Trial License
@@ -21,7 +21,7 @@ App.config = App.config || {};
     var options = {
 
         colorPalette: [
-            { content: 'transparent', icon: 'assets/transparent-icon.svg' },
+            { content: 'transparent', icon: '/../../assets/transparent-icon.svg' },
             { content: '#f6f6f6' },
             { content: '#dcd7d7' },
             { content: '#8f8f8f' },
@@ -40,7 +40,7 @@ App.config = App.config || {};
         ],
 
         colorPaletteReset: [
-            { content: undefined, icon: 'assets/no-color-icon.svg' },
+            { content: undefined, icon: '/../../assets/no-color-icon.svg' },
             { content: '#f6f6f6' },
             { content: '#dcd7d7' },
             { content: '#8f8f8f' },

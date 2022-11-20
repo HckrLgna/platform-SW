@@ -37,6 +37,11 @@ Route::group(['middleware' => ['auth'],'as' => 'backoffice.'],function (){
         ->name('user.assign_permission');
     Route::post('user/{user}/permission_assignment','App\Http\Controllers\UserController@permission_assignment')
         ->name('user.permission_assignment');
+
+    Route::get('user/{user}/assign_board','App\Http\Controllers\UserController@assign_board')
+        ->name('user.assign_board');
+    Route::post('user/{user}/board_assignment','App\Http\Controllers\UserController@board_assignment')
+        ->name('user.board_assignment');
 });
 
 
@@ -45,7 +50,6 @@ Route::group(['middleware' => ['auth'],'as' => 'frontoffice.'],function (){
     Route::resource('board','App\Http\Controllers\BoardController');
 
     Route::get('board/with/{user}', 'App\Http\Controllers\BoardController@board_with');
-
     Route::get('add-user-board/{role_id?}/{board_id?}/send','App\Http\Controllers\BoardController@addUserBoard')->name('board.add-user');
     Route::post('send-invitation/{board}/','App\Http\Controllers\SendInvitationController@enviar')->name('send-invitation');
 
@@ -70,7 +74,7 @@ Route::get('chat/{chat}/get_messages', 'App\Http\Controllers\ChatController@get_
 
 Route::post('message/sent', '\App\Http\Controllers\MessageController@sent')->name('message.sent');
 
-Route::get('board/{board}', 'App\Http\Controllers\BoardController@show')->name('board.show');
+
 Route::get('board/with/{user}', 'App\Http\Controllers\BoardController@board_with')->name('board.with');
 
 Route::post('model/sent', 'App\Http\Controllers\ModelController@sent')->name('model.sent');

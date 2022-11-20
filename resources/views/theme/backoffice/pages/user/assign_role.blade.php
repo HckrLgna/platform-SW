@@ -23,8 +23,8 @@
 
                                     @foreach($roles as $role)
                                         <p>
-                                            <input type="checkbox" id="{{$role->id}}" name="roles[]" value="{{$role->id}}" @if( $user->has_role($role->id) ) checked @endif/>
                                             <label for="{{$role->id}}">
+                                                <input type="checkbox" id="{{$role->id}}" name="roles[]" value="{{$role->id}}" @if( $user->has_role($role->id) ) checked @endif/>
                                                 <span>{{$role->name}}</span>
                                             </label>
                                         </p>

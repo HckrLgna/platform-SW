@@ -12,7 +12,7 @@
         <div class="divider"></div>
         <div class="section">
             <div class="row">
-                <form class="col s12 m8 offset-m2" method="post" action="{{route('backoffice.permission.store')}}">
+                <form class="col s12 m8 offset-m2" method="post" action="{{route('backoffice.permission.store',)}}">
                     {{csrf_field()}}
                     <div class="row">
                         <div class="input-field col s6">

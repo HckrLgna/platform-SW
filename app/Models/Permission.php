@@ -22,7 +22,6 @@ class Permission extends Model
     //almacenamiento
     public function store($request){
         $slug = Str::slug($request->name,'-');
-        alert('exito el permiso se creo con exito','succes')->showConfirmButton();
         return self::create($request->all()+[
             'slug'=>$slug,
             ]);

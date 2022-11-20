@@ -14,7 +14,13 @@ class BoardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
+        $this->middleware('role:' . config('app.admin_role') . '-' .
+            config('app.anfitrion_role'). '-' .
+            config('app.colaborador_role'). '-' .
+            config('app.invitado_role')
+
+        );
     }
     /**
      * Display a listing of the resource.
@@ -33,6 +39,7 @@ class BoardController extends Controller
      */
     public function create()
     {
+
     }
 
     /**
@@ -43,6 +50,7 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
+        $role_id = 2;
         try {
             $user = auth()->user();
             $board = new Board();
@@ -51,21 +59,19 @@ class BoardController extends Controller
             $board->path_img = $request->input('path_img');
             $board->description = $request->input('description');
             $board->save();
-
             DB::table('board_user')->insert([
                 'board_id' => $board->id,
                 'user_id' => $user->id,
             ]);
             DB::table('role_user')->insert([
-                'role_id' => 2,
+                'role_id' => $role_id,
                 'user_id' => $user->id,
-                'board_user_id'=> $board->id,
+                'board_id' => $board->id,
             ]);
         }catch (Exception $exception){
             return $exception;
         }
-
-        return redirect()->route('frontoffice.board.show',$board);
+        return redirect()->route('frontoffice.dashboard.index',$board);
     }
 
     /**
@@ -76,6 +82,7 @@ class BoardController extends Controller
      */
     public function show(Board $board)
     {
+        $this->authorize('view',$board);
         abort_unless($board->users->contains(auth()->id()), 403);
         return view('theme.frontoffice.pages.board.show',[
             'board' => $board
@@ -111,7 +118,6 @@ class BoardController extends Controller
         $boardN->description = $request->input('description');
         $boardN->path_img = $request->input('path_img');
         $boardN->save();
-        //actualizar permisos de usuarios
         return redirect()->route('frontoffice.dashboard.index');
     }
 
@@ -131,24 +137,19 @@ class BoardController extends Controller
         if ($user){
             try {
                 DB::table('board_user')->insert([
-                    'board_id' => $board_id,
-                    'user_id' => $user->id,
+                   'user_id'=>$user->id,
+                    'board_id'=>$board_id
                 ]);
                 DB::table('role_user')->insert([
                     'role_id' => $role_id,
                     'user_id' => $user->id,
-                    'board_user_id'=> $board_id,
+                    'board_id' => $board_id
                 ]);
             }catch (Exception $exception){
                 return $exception;
             }
         }
         return redirect()->route('frontoffice.dashboard.index');
-    }
-    public function boardUpdateOnline(Request $request){
-        $board = Board::find($this);
-        $board->save();
-        return $board;
     }
     public function board_with(User $user)
     {
@@ -162,7 +163,7 @@ class BoardController extends Controller
         $board = \App\Models\Board::create([]);
         $board->users()->sync([$user_a->id, $user_b->id]);
     }
-        return redirect()->route('board.show', $board);
+        return redirect()->route('frontoffice.board.show', $board);
     }
     public function get_users(Board $board)
     {

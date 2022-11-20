@@ -1,6 +1,6 @@
 const boardForm = get(".form");
-const btn = get('.msger-send-btn')
-const body = get('.body');
+const btn = get('.btnClick')
+const body = get('.paper-containe');
 const boardId = window.location.pathname.substr(7);
 const typing = get(".typing");
 const chatStatus = get(".chatStatus");
@@ -29,29 +29,6 @@ let authUser;
                     .listen('ModelSent', (e) => {
                         appendGraph(e.model.code);
                         console.log('intentando cambiar');
-                    })
-                    .here(users => {
-                        let result = users.filter(user => user.id !== authUser.id);
-                        if(result.length > 0){}
-                            //chatStatus.className = 'chatStatus online';
-                    })
-                    .joining(user => {
-                            //chatStatus.className = 'chatStatus online';
-                    })
-                    .leaving(user => {
-                        if(user.id !== authUser.id){}
-                            //chatStatus.className = 'chatStatus offline';
-                    })
-                    .listenForWhisper('typing', e => {
-                        if(e > 0){}
-                            //typing.style.display = '';
-                        if(typingTimer){
-                            clearTimeout(typingTimer);
-                        }
-                        typingTimer = setTimeout( () => {
-                           // typing.style.display = 'none';
-                            typingTimer = false;
-                        }, 3000);
                     });
             });
     }

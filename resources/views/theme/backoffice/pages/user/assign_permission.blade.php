@@ -26,9 +26,10 @@
                                         <p>{{$role->name}}</p>
                                         @foreach($role->permissions as $permission)
                                             <p>
-                                                <input type="checkbox" id="{{$permission->id}}" name="permissions[]" value="{{$permission->id}}"
-                                                @if($user->has_permission($permission->id)) checked @endif >
                                                 <label for="{{$permission->id}}">
+                                                    <input type="checkbox" id="{{$permission->id}}" name="permissions[]" value="{{$permission->id}}"
+                                                           @if($user->has_permission($permission->id)) checked @endif
+                                                    />
                                                     <span>{{$permission->name}}</span>
                                                 </label>
                                             </p>

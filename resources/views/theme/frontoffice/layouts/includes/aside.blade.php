@@ -14,7 +14,7 @@
                                 <span class="material-icons">face</span>
                             </a>
                         </li>
-                        <li class="tab col s4">
+                        <li class="tab col s4 settings">
                             <a href="#settings">
                                 <span class="material-icons">settings</span>
                             </a>
@@ -22,81 +22,7 @@
                     </ul>
                 </div>
                 <div id="settings" class="col s12">
-                    <h6 class="mt-5 mb-3 ml-3">GENERAL SETTINGS</h6>
-                    <ul class="collection border-none">
-                        <li class="collection-item border-none">
-                            <div class="m-0">
-                                <span class="font-weight-600">Notifications</span>
-                                <div class="switch right">
-                                    <label>
-                                        <input checked type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <p>Use checkboxes when looking for yes or no answers.</p>
-                        </li>
-                        <li class="collection-item border-none">
-                            <div class="m-0">
-                                <span class="font-weight-600">Show recent activity</span>
-                                <div class="switch right">
-                                    <label>
-                                        <input checked type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                        </li>
-                        <li class="collection-item border-none">
-                            <div class="m-0">
-                                <span class="font-weight-600">Notifications</span>
-                                <div class="switch right">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <p>Use checkboxes when looking for yes or no answers.</p>
-                        </li>
-                        <li class="collection-item border-none">
-                            <div class="m-0">
-                                <span class="font-weight-600">Show recent activity</span>
-                                <div class="switch right">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                        </li>
-                        <li class="collection-item border-none">
-                            <div class="m-0">
-                                <span class="font-weight-600">Show your emails</span>
-                                <div class="switch right">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <p>Use checkboxes when looking for yes or no answers.</p>
-                        </li>
-                        <li class="collection-item border-none">
-                            <div class="m-0">
-                                <span class="font-weight-600">Show Task statistics</span>
-                                <div class="switch right">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                        </li>
-                    </ul>
+                    @yield('aside.settings')
                 </div>
                 <div id="chatapp" class="col s12">
                     <div class="collection border-none">
@@ -105,7 +31,7 @@
                             @foreach(auth()->user()->boards as $board)
                                 @foreach($board->users as $user  )
                                     @if($user->id != auth()->user()->id)
-                                        <a href="{{route('chat.with', $user)}}" class="collection-item avatar border-none">
+                                        <a href="{{route('chat.with', $user)}} " onclick="event().prevent_default" class="collection-item avatar border-none">
                                             <img src="{{asset($user->profile_path)}} " alt="" class="circle cyan">
                                             <span class="line-height-0">{{$user->name}} </span>
                                             <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>

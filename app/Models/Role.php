@@ -20,6 +20,9 @@ class Role extends Model
     public function users(){
         return $this->belongsToMany('App\Models\User')->withTimestamps();
     }
+    public function boards(){
+        return $this->belongsToMany('App\Models\Board');
+    }
     //almacenamiento
     public function store($request){
         $slug = Str::slug($request->name,'-');

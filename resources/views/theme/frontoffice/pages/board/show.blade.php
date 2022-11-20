@@ -12,8 +12,9 @@
 @endsection
 
 @section('content')
+    <button class="button is-success" id="btnCapturar">Tomar captura</button>
     <form class="form">
-        <button type="submit" class="msger-send-btn">Send</button>
+        <button type="submit" class="btnClick" hidden>Send</button>
     </form>
     <div id="app">
         <div class="app-header">
@@ -64,4 +65,6 @@
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script  src="/js/app.js"></script>
     <script  src="/js/board.js"></script>
+    <script src="/js/script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
 @endsection

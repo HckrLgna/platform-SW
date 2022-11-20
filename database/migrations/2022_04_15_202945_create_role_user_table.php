@@ -17,10 +17,10 @@ class CreateRoleUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('board_id');
+            $table->foreign('board_id')->references('id')->on('boards')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->unsignedBigInteger('board_user_id');
-            $table->foreign('board_user_id')->references('id')->on('board_user')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
