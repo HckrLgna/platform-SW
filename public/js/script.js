@@ -7,7 +7,7 @@
  */
 //Definimos el botón para escuchar su click
 const $boton = document.querySelector("#btnCapturar"), // El botón que desencadena
-    $objetivo = document.body; // A qué le tomamos la foto
+    $objetivo = document.querySelector('.joint-layers'); // A qué le tomamos la foto
 
 const enviarCapturaAServidor = canvas => {
     // Cuando se resuelva la promesa traerá el canvas

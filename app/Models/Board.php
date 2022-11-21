@@ -17,7 +17,4 @@ class Board extends Model
     {
         return $this->hasMany('App\Models\Modelo');
     }
-    public function roles(){
-        return $this->belongsToMany('App\Models\Role');
-    }
 }

@@ -73,7 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     //almacenamiento
     public function store($request){
-        $profile_path = 'images/avatar/avatar-'.random_int(1,17).'.png';
+        $profile_path = 'images/avatar/avatar-'.random_int(1,5).'.png';
         $user = self::create($request->all());
         $user->update(['profile_path' => $profile_path]) ;
         $user->update(['password'=>Hash::make($request->password)]);
@@ -240,10 +240,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function get_role_board($id,$board_id)
     {
-        $res = DB::table('role_user')
-                    ->where('board_id','=',$board_id)
-                    ->where('user_id','=',$id)
-                    ->first();
-        return Role::find($res->role_id);
+        try {
+            $res = DB::table('role_user')
+                ->where('board_id','=',$board_id)
+                ->where('user_id','=',$id)
+                ->first();
+            $role = Role::find($res->role_id);
+        }catch (Exception $exception){
+            return $exception;
+        }
+        return $role;
     }
 }

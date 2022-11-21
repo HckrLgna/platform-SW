@@ -1,11 +1,15 @@
 const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
-const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+let PERSON_IMG = document.getElementById('profile_path').value;
 const chatWith = get(".chatWith");
 const typing = get(".typing");
 const chatStatus = get(".chatStatus");
-const chatId = window.location.pathname.substr(6);
+const chatStatus2 = get(".status");
+const chatId = window.location.pathname.substr(11);
+
+console.log(PERSON_IMG);
+
 let authUser;
 let typingTimer = false;
 
@@ -16,14 +20,14 @@ window.onload = function () {
             authUser = res.data.authUser;
         })
         .then(() => {
-            axios.get(`/chat/${chatId}/get_users`).then( res => {
+            axios.get(`/dashboard/${chatId}/get_users`).then( res => {
                 let results = res.data.users.filter( user => user.id !== authUser.id);
                 if(results.length > 0)
                     chatWith.innerHTML = results[0].name;
             });
         })
         .then(() => {
-            axios.get(`/chat/${chatId}/get_messages`).then(res => {
+            axios.get(`/dashboard/${chatId}/get_messages`).then(res => {
                 appendMessages(res.data.messages);
             });
         })
@@ -40,16 +44,20 @@ window.onload = function () {
                 })
                 .here(users => {
                     let result = users.filter(user => user.id !== authUser.id);
-                    if(result.length > 0)
+                    if(result.length > 0) {
                         chatStatus.className = 'chatStatus online';
+                        chatStatus2.className = 'avatar-status avatar-online'
+                    }
                 })
                 .joining(user => {
                     if(user.id !== authUser.id)
                         chatStatus.className = 'chatStatus online';
+                        chatStatus2.className = 'avatar-status avatar-online'
                 })
                 .leaving(user => {
                     if(user.id !== authUser.id)
                         chatStatus.className = 'chatStatus offline';
+                        chatStatus2.className = 'avatar-status avatar-offline'
                 })
                 .listenForWhisper('typing', e => {
                     if(e > 0)
@@ -92,7 +100,13 @@ function appendMessages(messages)
 {
     let side = 'left';
     messages.forEach(message => {
-        side = (message.user_id === authUser.id) ? 'right' : 'left';
+        if (message.user_id === authUser.id){
+            side = 'right'
+            PERSON_IMG = document.getElementById('profile_path2').value;;
+        }else{
+            side = 'left';
+            PERSON_IMG = document.getElementById('profile_path').value;;
+        }
         appendMessage(
             message.user.name,
             PERSON_IMG,

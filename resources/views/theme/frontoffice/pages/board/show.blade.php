@@ -12,7 +12,6 @@
 @endsection
 
 @section('content')
-    <button class="button is-success" id="btnCapturar">Tomar captura</button>
     <form class="form">
         <button type="submit" class="btnClick" hidden>Send</button>
     </form>

@@ -126,10 +126,5 @@
     <!--  Scripts-->
     @extends('theme.frontoffice.layouts.includes.foot')
 
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="../../bin/materialize.js"></script>
     <script src="js/init.js"></script>
-
-
-
     <div class="sidenav-overlay"></div><div class="drag-target"></div></body></html>

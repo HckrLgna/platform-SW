@@ -12,13 +12,6 @@ let authUser;
                 authUser = res.data.authUser;
             })
             .then(() => {
-                axios.get(`/board/${boardId}/get_users`).then( res => {
-                    let results = res.data.users.filter( user => user.id !== authUser.id);
-                    if(results.length > 0){}
-                      //  chatWith.innerHTML = results[0].name;
-                });
-            })
-            .then(() => {
                 axios.get(`/board/${boardId}/get_models`).then(res => {
                     appendGraphs(res.data.models[0].code);
                     console.log('actualizado');
@@ -68,22 +61,6 @@ function appendGraphs(code){
     //app.graph.fromJSON( ${code} )
     var objeto = JSON.parse(code);
     app.graph.fromJSON(objeto);
-}
-
-    //utils
-function sendTypingEvent()
-{
-    typingTimer = true;
-    Echo.join(`chat.${chatId}`)
-        .whisper('typing', msgerInput.value.length);
-}
-function formatDate(date) {
-    const d = date.getDate();
-    const mo = date.getMonth() + 1;
-    const y = date.getFullYear();
-    const h = "0" + date.getHours();
-    const m = "0" + date.getMinutes();
-    return `${d}/${mo}/${y} ${h.slice(-2)}:${m.slice(-2)}`;
 }
 
 function get(selector, root = document) {

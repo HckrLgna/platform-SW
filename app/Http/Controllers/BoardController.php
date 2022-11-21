@@ -14,13 +14,7 @@ class BoardController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
-        $this->middleware('role:' . config('app.admin_role') . '-' .
-            config('app.anfitrion_role'). '-' .
-            config('app.colaborador_role'). '-' .
-            config('app.invitado_role')
-
-        );
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -82,7 +76,7 @@ class BoardController extends Controller
      */
     public function show(Board $board)
     {
-        $this->authorize('view',$board);
+        //$this->authorize('view',$board);
         abort_unless($board->users->contains(auth()->id()), 403);
         return view('theme.frontoffice.pages.board.show',[
             'board' => $board

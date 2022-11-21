@@ -13,9 +13,9 @@
         <li class="no-padding">
             <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                    <a href="{{route('frontoffice.dashboard.index')}}" class="waves-effect waves-cyan">
-                        <i class="material-icons">content_paste</i>
-                        <span class="nav-text">Invitaciones</span>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger grey-text text-darken-1 waves-effect waves-cyan">
+                        <i class="material-icons">chat</i>
+                        <span class="nav-text">Profile</span>
                     </a>
                 </li>
             </ul>
