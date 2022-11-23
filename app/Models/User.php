@@ -251,4 +251,9 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return $role;
     }
+    public function list_boards(){
+        $boards= $this->boards->pluck('name')->toArray();
+        $string = implode(',',$boards);
+        return $string;
+    }
 }

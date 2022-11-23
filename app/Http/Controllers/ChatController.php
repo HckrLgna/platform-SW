@@ -24,7 +24,7 @@ class ChatController extends Controller
     {
         $user_a = auth()->user();
         $user_b = $user;
-        $chat = $user_a->chats()->wherehas('users', function ($q) use ($user_b) {
+        $chat = $user_a->chats()->wherehas('user', function ($q) use ($user_b) {
             $q->where('chat_user.user_id', $user_b->id);
         })->first();
         if(!$chat)
@@ -43,7 +43,7 @@ class ChatController extends Controller
     {
         $users = $chat->users;
         return response()->json([
-            'users' => $users
+            'user' => $users
         ]);
     }
 

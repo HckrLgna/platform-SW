@@ -49,6 +49,19 @@ Route::group(['middleware' => ['auth'],'as' => 'frontoffice.'],function (){
     Route::get('dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('board','App\Http\Controllers\BoardController');
 
+    Route::get('board/user/{user}', [App\Http\Controllers\BoardController::class,'showUser'])->name('board.user.show');
+    Route::get('board/user/{user}/assign_role','App\Http\Controllers\BoardController@assign_role')
+        ->name('board.user.assign_role');
+    Route::post('board/user/{user}/role_assignment','App\Http\Controllers\BoardController@role_assignment')
+        ->name('board.user.role_assignment');
+
+    Route::get('board/user/{user}/assign_permission','App\Http\Controllers\BoardController@assign_permission')
+        ->name('board.user.assign_permission');
+    Route::post('board/user/{user}/permission_assignment','App\Http\Controllers\BoardController@permission_assignment')
+        ->name('board.user.permission_assignment');
+
+
+
     Route::get('board/with/{user}', 'App\Http\Controllers\BoardController@board_with');
     Route::get('add-user-board/{role_id?}/{board_id?}/send','App\Http\Controllers\BoardController@addUserBoard')->name('board.add-user');
     Route::post('send-invitation/{board}/','App\Http\Controllers\SendInvitationController@enviar')->name('send-invitation');

@@ -35,42 +35,48 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <h5>Participantes Tablero</h5>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Rol</th>
-                            </tr>
-                            </thead>
 
-                            <tbody>
-                            @foreach($users as $user)
-                                <tr>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>
-                                        <select name="role">
-                                            <option value="" disabled selected>Seleciona un rol</option>
-                                            @foreach($roles as $role)
-                                                <option value="{{$role->id}}">{{$role->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <label>Materialize Select</label>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
                     <div class="modal-footer">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar
                         </button>
                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                     </div>
                 </form>
+            </div>
+            <div class="row pt-2">
+                <h5>Participantes Tablero</h5>
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card-panel">
+                                <div class="row">
+                                    <table class="responsive-table">
+                                        <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Correo</th>
+                                            <th>Roles del sistema</th>
+                                            <th colspan="2">Acciones</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach($users as $user)
+                                            <tr>
+                                                <td><a href="{{route('frontoffice.board.user.show',$user)}}">{{$user->name}}</a></td>
+                                                <td>{{$user->email}}</td>
+                                                <td>{{$user->list_roles()}}</td>
+                                                <td><a href="#">Editar</a></td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

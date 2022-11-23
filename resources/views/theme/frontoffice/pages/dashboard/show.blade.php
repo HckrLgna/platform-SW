@@ -34,25 +34,24 @@
     <div id="chatapp" class="col s12">
         <div class="collection border-none">
             <h6 class="mt-5 mb-3 ml-3">Salas de chat</h6>
-                    @foreach($users_chat as $user  )
-                        @if($user->id != auth()->user()->id )
-                            <a href="{{route('chat.with', $user)}}" id="enviar()" class="collection-item avatar border-none">
-                                <img src="{{asset($user->profile_path)}}" alt="avatar" class="circle cyan">
-                                <span class="status ">
+            @foreach($users_chat as $user  )
+                @if($user->id != auth()->user()->id && auth()->user()->chats)
+                    <a href="{{route('chat.with', $user)}}" id="enviar()" class="collection-item avatar border-none">
+                        <img src="{{asset($user->profile_path)}}" alt="avatar" class="circle cyan">
+                        <span class="status ">
                                     <i></i>
                                 </span>
-                                <span class="line-height-0">{{$user->name}} </span>
-                                <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>
-                                @foreach($chats as $chat )
-                                    @if(count($chat->messages)&& $chat->users->find($user))
-                                        <p class="medium-small blue-grey-text text-lighten-3">{{$chat->messages[count($chat->messages)-1]->content}} </p>
-                                    @endif
-                                @endforeach
-                            </a>
-                            @else
-                                <input type="text" id="profile_path2" value="{{asset($user->profile_path)}}" hidden>
-                        @endif
-                    @endforeach
+                        <span class="line-height-0">{{$user->name}} </span>
+                        <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>
+                            @if(count($chat->messages)&& $chat->users->find($user))
+                                <p class="medium-small blue-grey-text text-lighten-3">{{$chat->messages[count($chat->messages)-1]->content}} </p>
+                            @endif
+                        <input type="text" id="profile_path" value="{{asset($user->profile_path)}}" hidden>
+                    </a>
+                @else
+                    <input type="text" id="profile_path2" value="{{asset($user->profile_path)}}" hidden>
+                @endif
+            @endforeach
         </div>
     </div>
     <div id="activity" class="col s12">
@@ -132,56 +131,56 @@
     </div>
 @endsection
 @section('content')
-        <div class="row">
-            <div class="col s3">
-                <!-- Modal Trigger -->
-                <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modalCreateBoard"><i class="material-icons">add</i></a>
-            </div>
-            <div class="col s8">
-                <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Search" />
-            </div>
-            <!-- Modal Structure -->
-            <div id="modalCreateBoard" class="modal">
-                <div class="modal-content">
-                    <h4>Crear Tablero</h4>
-                    <div class="row">
-                        <form class="col s12" method="post" action="{{route('frontoffice.board.store')}}">
-                            @csrf
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input value="" id="name" type="text" class="validate" name="name">
-                                    <label class="active" for="name">Nombre del tablero</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
-                                    <label for="textarea1">Descripcion del tablero</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        <input type="file">
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" name="path_img">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Crear
-                                    <i class="material-icons right">create_new_folder</i>
-                                </button>
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
+    <div class="row">
+        <div class="col s3">
+            <!-- Modal Trigger -->
+            <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modalCreateBoard"><i class="material-icons">add</i></a>
         </div>
-        <div class="row">
-            @foreach($boards as $board)
+        <div class="col s8">
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Search" />
+        </div>
+        <!-- Modal Structure -->
+        <div id="modalCreateBoard" class="modal">
+            <div class="modal-content">
+                <h4>Crear Tablero</h4>
+                <div class="row">
+                    <form class="col s12" method="post" action="{{route('frontoffice.board.store')}}">
+                        @csrf
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input value="" id="name" type="text" class="validate" name="name">
+                                <label class="active" for="name">Nombre del tablero</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
+                                <label for="textarea1">Descripcion del tablero</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>File</span>
+                                    <input type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" name="path_img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Crear
+                                <i class="material-icons right">create_new_folder</i>
+                            </button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        @foreach($boards as $board)
             <div class="col s12 m6 padding-1">
                 <div class="card ">
                     <div class="card-image waves-effect waves-block waves-light">
@@ -198,11 +197,11 @@
                                    document.getElementById('destroy-form').submit();">
                                     {{ __('Eliminar') }}
                                 </a>
-                            @endif
-                                <form id="destroy-form" action="{{route('frontoffice.board.destroy',$board) }}" method="post" class="d-none">
-                                    @method('delete')
-                                    @csrf
-                                </form>
+                        @endif
+                        <form id="destroy-form" action="{{route('frontoffice.board.destroy',$board) }}" method="post" class="d-none">
+                            @method('delete')
+                            @csrf
+                        </form>
                         </p>
                     </div>
                     <div class="card-reveal">
@@ -228,18 +227,18 @@
                         @csrf
                         <div class="modal-content">
                             <h6>Envia invitaciones</h6>
-                                <div class="input-field col s12">
-                                    <input id="email" type="email" class="validate" name="email">
-                                    <label for="email">Email</label>
-                                </div>
+                            <div class="input-field col s12">
+                                <input id="email" type="email" class="validate" name="email">
+                                <label for="email">Email</label>
+                            </div>
 
-                                <h6>Permisos</h6>
-                                <div class="input-field col s12">
-                                    <select name="role_id">
-                                            <option value="3" name="role_id">Colaborador</option>
-                                            <option value="4" name="role_id">Invitado</option>
-                                    </select>
-                                </div>
+                            <h6>Permisos</h6>
+                            <div class="input-field col s12">
+                                <select name="role_id">
+                                    <option value="3" name="role_id">Colaborador</option>
+                                    <option value="4" name="role_id">Invitado</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="modal-footer pb-5">
                             <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
@@ -250,9 +249,10 @@
                     </form>
                 </div>
             </div>
-            @endforeach
-        </div>
+        @endforeach
+    </div>
 @endsection
 @section('foot')
     <script  src= " /js/app.js"></script>
+    <script  src= "/js/chat.js"></script>
 @endsection

@@ -420,7 +420,7 @@
     validationError: null,
 
     // The default name for the JSON `id` attribute is `"id"`. MongoDB and
-    // CouchDB users may want to set this to `"_id"`.
+    // CouchDB user may want to set this to `"_id"`.
     idAttribute: 'id',
 
     // The prefix is used to create the client id which is used to identify models locally.

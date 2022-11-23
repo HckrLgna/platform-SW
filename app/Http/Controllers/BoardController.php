@@ -178,7 +178,7 @@ class BoardController extends Controller
     {
         $user_a = auth()->user();
         $user_b = $user;
-	    $board = $user_a->boards()->whereHas('users', function ($q) use ($user_b) {
+	    $board = $user_a->boards()->whereHas('user', function ($q) use ($user_b) {
         $q->where('board_user.user_id', $user_b->id);
     })->first();
 	if(!$board)
@@ -192,7 +192,7 @@ class BoardController extends Controller
     {
         $users = $board->users;
         return response()->json([
-            'users' => $users
+            'user' => $users
         ]);
     }
 
@@ -202,5 +202,36 @@ class BoardController extends Controller
         return response()->json([
             'models' => $models
         ]);
+    }
+    public function showUser(User $user){
+        //$this->authorize('view', $user);
+        return view('theme.frontoffice.pages.board.user.show',[
+            'user'=>$user,
+        ]);
+    }
+    public function assign_role(User $user){
+        //$this->authorize('assign_role', $user);
+        return view('theme.frontoffice.pages.board.user.assign_role',[
+            'user'=>$user,
+            'roles'=>Role::all()
+        ]);
+    }
+    public function role_assignment(Request $request,User $user){
+        //$this->authorize('assign_role', $user);
+        $user->role_assignment($request);
+        return redirect()->route('frontoffice.board.user.show',$user);
+
+    }
+    public function assign_permission(User $user){
+        //$this->authorize('assign_permission', $user);
+        return view('theme.frontoffice.pages.board.user.assign_permission',[
+            'user' => $user,
+            'roles' => $user->roles
+        ]);
+    }
+    public function permission_assignment(Request $request, User $user){
+        //$this->authorize('assign_permission', $user);
+        $user->permissions()->sync($request->permissions);
+        return redirect()->route('frontoffice.board.user.show',$user);
     }
 }

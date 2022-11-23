@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
 
             'name'=>'required|string|max:255',
             'dob'=>'required',
-            'email'=>'required|string|email|unique:users,email,' . $this->route('user')->id . '|max:255',
+            'email'=>'required|string|email|unique:user,email,' . $this->route('user')->id . '|max:255',
 
 
         ];
