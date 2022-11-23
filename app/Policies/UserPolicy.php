@@ -65,9 +65,6 @@ class UserPolicy
         if ($user->has_role(config('app.admin_role'))&&$user->has_permission('update-user') ){
             return true;
         }
-        if ($user->has_role(config('app.secretary_role')) && $model->has_role(config('app.patient_role')) && $user->has_permission('update-user')){
-            return true;
-        }
         return false;
         /*
         return (&& $user->has_any_role([

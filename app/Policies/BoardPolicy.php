@@ -30,7 +30,8 @@ class BoardPolicy
      */
     public function view(User $user, Board $board)
     {
-        return $user->has_permission('view-anfitrion-board');
+        return $user->has_permission('view-anfitrion-board')|| $user->has_permission('view-colaborador-board')
+               || $user->has_permission('view-invitado-board');
     }
 
     /**
@@ -53,7 +54,7 @@ class BoardPolicy
      */
     public function update(User $user, Board $board)
     {
-        //
+        return $user->has_permission('update-anfitrion-board')|| $user->has_permission('update-colaborador-board');
     }
 
     /**
@@ -90,5 +91,8 @@ class BoardPolicy
     public function forceDelete(User $user, Board $board)
     {
         //
+    }
+    public function sent(User $user, Board $board){
+        return $user->has_permission('update-anfitrion-board')|| $user->has_permission('update-colaborador-board');
     }
 }

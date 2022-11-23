@@ -62,6 +62,16 @@ class BoardController extends Controller
                 'user_id' => $user->id,
                 'board_id' => $board->id,
             ]);
+            $q = DB::table('permissions')->where('name','=','view-anfitrion-board')->get();
+            DB::table('permission_user')->insert([
+                'permission_id' => $q[0]->id,
+                'user_id' => $user->id,
+            ]);
+            $q = DB::table('permissions')->where('name','=','update-anfitrion-board')->get();
+            DB::table('permission_user')->insert([
+                'permission_id' => $q[0]->id,
+                'user_id' => $user->id,
+            ]);
         }catch (Exception $exception){
             return $exception;
         }
@@ -76,7 +86,7 @@ class BoardController extends Controller
      */
     public function show(Board $board)
     {
-        //$this->authorize('view',$board);
+        $this->authorize('view',$board);
         abort_unless($board->users->contains(auth()->id()), 403);
         return view('theme.frontoffice.pages.board.show',[
             'board' => $board
@@ -139,6 +149,25 @@ class BoardController extends Controller
                     'user_id' => $user->id,
                     'board_id' => $board_id
                 ]);
+                if ($role_id == 3){
+                    $q = DB::table('permissions')->where('name','=','view-colaborador-board')->get();
+                    DB::table('permission_user')->insert([
+                        'permission_id' => $q[0]->id,
+                        'user_id' => $user->id,
+                    ]);
+                    $q = DB::table('permissions')->where('name','=','update-colaborador-board')->get();
+                    DB::table('permission_user')->insert([
+                        'permission_id' => $q[0]->id,
+                        'user_id' => $user->id,
+                    ]);
+                }else{
+                    $q = DB::table('permissions')->where('name','=','view-invitado-board')->get();
+                    DB::table('permission_user')->insert([
+                        'permission_id' => $q[0]->id,
+                        'user_id' => $user->id,
+                    ]);
+                }
+
             }catch (Exception $exception){
                 return $exception;
             }

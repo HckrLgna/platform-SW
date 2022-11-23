@@ -79,7 +79,6 @@ class DashboardController extends Controller
         return view('theme.frontoffice.pages.dashboard.index',[
             'boards' => $boards,
             'users_chat' => $users_chat,
-            'chat' => $user->chats[0]
         ]);
     }
 }
