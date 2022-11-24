@@ -36,18 +36,20 @@
             <h6 class="mt-5 mb-3 ml-3">Salas de chat</h6>
                     @foreach($users_chat as $user  )
                         @if($user->id != auth()->user()->id )
-                            <a href="{{route('chat.with', $user)}}" id="enviar()" class="collection-item avatar border-none">
+                            <a href="{{route('dashboard.chat.with', $user)}}" id="enviar()" class="collection-item avatar border-none">
                                 <img src="{{asset($user->profile_path)}}" alt="avatar" class="circle cyan">
                                 <span class="status ">
                                     <i></i>
                                 </span>
                                 <span class="line-height-0">{{$user->name}} </span>
                                 <span class="medium-small right blue-grey-text text-lighten-3">5.00 AM</span>
+                                @if($chats)
                                 @foreach($chats as $chat )
                                     @if(count($chat->messages)&& $chat->users->find($user))
                                         <p class="medium-small blue-grey-text text-lighten-3">{{$chat->messages[count($chat->messages)-1]->content}} </p>
                                     @endif
                                 @endforeach
+                                @endif
                             </a>
                             @else
                                 <input type="text" id="profile_path2" value="{{asset($user->profile_path)}}" hidden>
@@ -254,5 +256,5 @@
         </div>
 @endsection
 @section('foot')
-    <script  src= " /js/app.js"></script>
+    <script  src= "/js/app.js"></script>
 @endsection

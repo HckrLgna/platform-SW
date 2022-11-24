@@ -62,7 +62,6 @@ Route::group(['middleware' => ['auth'],'as' => 'frontoffice.'],function (){
 
 
 
-    Route::get('board/with/{user}', 'App\Http\Controllers\BoardController@board_with');
     Route::get('add-user-board/{role_id?}/{board_id?}/send','App\Http\Controllers\BoardController@addUserBoard')->name('board.add-user');
     Route::post('send-invitation/{board}/','App\Http\Controllers\SendInvitationController@enviar')->name('send-invitation');
 
@@ -79,7 +78,7 @@ Route::get('auth/user', function () {
 
 Route::get('dashboard/{chat}', 'App\Http\Controllers\DashboardController@show')->name('dashboard.show');
 
-Route::get('dashboard/with/{user}', 'App\Http\Controllers\DashboardController@chat_with')->name('chat.with');
+Route::get('dashboard/with/{user}', 'App\Http\Controllers\DashboardController@chat_with')->name('dashboard.chat.with');
 
 Route::get('dashboard/{chat}/get_users', 'App\Http\Controllers\DashboardController@get_users')->name('chat.get_users');
 
@@ -90,8 +89,11 @@ Route::post('message/sent', '\App\Http\Controllers\MessageController@sent')->nam
 
 Route::get('board/with/{user}', 'App\Http\Controllers\BoardController@board_with')->name('board.with');
 Route::post('model/sent', 'App\Http\Controllers\ModelController@sent')->name('model.sent');
-Route::post('model/update/{id_model}', 'App\Http\Controllers\ModelController@myupdate')->name('model.myupdate');
 
 Route::get('board/{board}/get_users', 'App\Http\Controllers\BoardController@get_users')->name('board.get_users');
 Route::get('board/{board}/get_models', 'App\Http\Controllers\BoardController@get_models')->name('board.get_models');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

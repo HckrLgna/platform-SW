@@ -26,7 +26,6 @@ class UserController extends Controller
             config('app.anfitrion_role'). '-' .
             config('app.colaborador_role'). '-' .
             config('app.invitado_role')
-
         );
 
     }
@@ -65,7 +64,7 @@ class UserController extends Controller
     public function store(StoreRequest $request, User $user)
     {
         $user=$user->store($request);
-        return redirect()->route('backoffice.user.show',$user);
+        return redirect()->route('dashboard.index');
     }
 
     /**

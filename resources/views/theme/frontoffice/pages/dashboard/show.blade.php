@@ -36,7 +36,7 @@
             <h6 class="mt-5 mb-3 ml-3">Salas de chat</h6>
             @foreach($users_chat as $user  )
                 @if($user->id != auth()->user()->id && auth()->user()->chats)
-                    <a href="{{route('chat.with', $user)}}" id="enviar()" class="collection-item avatar border-none">
+                    <a href="{{route('dashboard.chat.with', $user)}}" id="enviar()" class="collection-item avatar border-none">
                         <img src="{{asset($user->profile_path)}}" alt="avatar" class="circle cyan">
                         <span class="status ">
                                     <i></i>

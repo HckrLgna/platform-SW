@@ -7,7 +7,6 @@ use App\Models\Chat;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\containsEqual;
 
 class DashboardController extends Controller
 {
@@ -28,7 +27,7 @@ class DashboardController extends Controller
         foreach ($boards as $board){
             $users_chat = $board->users;
         }
-        abort_unless($chat->users->contains(auth()->id()), 403);
+        //abort_unless($chat->users->contains(auth()->id()), 403);
         return view('theme.frontoffice.pages.dashboard.show', [
             'chat' => $chat,
             'boards' => $boards,
@@ -39,13 +38,13 @@ class DashboardController extends Controller
     {
         $user_a = auth()->user();
         $user_b = $user;
-        $chat = $user_a->chats()->wherehas('user', function ($q) use ($user_b) {
+        $chat = $user_a->chats()->wherehas('users', function ($q) use ($user_b) {
             $q->where('chat_user.user_id', $user_b->id);
         })->first();
         if(!$chat)
         {
             try {
-                $chat = Chat::create([]);
+                $chat = \App\Models\Chat::create([]);
                 $chat->users()->sync([$user_a->id, $user_b->id]);
             }catch (\Exception $exception){
                 return $exception;
@@ -58,7 +57,7 @@ class DashboardController extends Controller
     {
         $users = $chat->users;
         return response()->json([
-            'user' => $users
+            'users' => $users
         ]);
     }
 
@@ -74,20 +73,13 @@ class DashboardController extends Controller
         $user = auth()->user();
         $boards = $user->boards;
         $users_chat = [];
-        $c=0;
         foreach ($boards as $board){
-            foreach ($board->users as $user){
-
-                    $users_chat[$c] = $user;
-                    $c=$c+1;
-            }
-
+            $users_chat = $board->users;
         }
-
         return view('theme.frontoffice.pages.dashboard.index',[
             'boards' => $boards,
             'users_chat' => $users_chat,
-            'chats' => $user->chats
+            'chats' => $user->chats->first
         ]);
     }
 }
