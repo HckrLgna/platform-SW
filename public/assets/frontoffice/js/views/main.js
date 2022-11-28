@@ -2,7 +2,7 @@
 
 Copyright (c) 2022 client IO
 
- 2022-10-13 
+ 2022-10-13
 
 
 This Source Code Form is subject to the terms of the JointJS+ Trial License
@@ -91,6 +91,77 @@ var App = window.App || {};
 
             this.$('.paper-container').append(paperScroller.el);
             paperScroller.render().center();
+            joint.dia.Element.define('custom.Actor', {
+                attrs: {
+                    body: {
+                        refD: 'M150 0 L75 200 L225 200 Z',
+                        strokeWidth: 2,
+                        stroke: '#31d0c6',
+                        fill: {
+                            type: 'linearGradient',
+                            stops: [
+                                {offset: '0%', color: 'rgba(49,208,198)'},
+                                {offset: '100%', color: 'rgba(55,235,223)'},
+                            ]
+                        },
+                        strokeDasharray: '0'
+                    },
+                    titulo: {
+                        textVerticalAnchor: 'middle',
+                        textAnchor: 'middle',
+                        text: 'Titulo',
+                        refX: '50%',
+                        refY: '60%',
+                        fontSize: 30,
+                        fontWeight: 'bold',
+                        fill: '#333333',
+                    },
+                    subtitulo: {
+                        ref: 'Titulo',
+                        textAnchor: 'middle',
+                        text: 'sub-titulo',
+                        refX: '50%',
+                        refY: '100%',
+                        fontSize: 14,
+                        fill: '#333333'
+                    },
+                    contenido: {
+                        ref: 'subtitulo',
+                        textAnchor: 'middle',
+                        text: 'contenido-figura',
+                        refX: '50%',
+                        refY: '180%',
+                        fontSize: 20,
+                        fontFamily: 'Roboto Condense',
+                        fill: '#333333',
+                    },
+                },
+
+            },{
+                markup: [
+                    {
+                        tagName: 'path',
+                        selector: 'body'
+                    },
+                    {
+                        tagName: 'text',
+                        selector: 'subtitulo'
+                    },
+                    {
+                        tagName: 'text',
+                        selector: 'titulo'
+                    },
+                    {
+                        tagName: 'text',
+                        selector: 'contenido'
+                    },
+                ]
+            });
+            var miFigura = new joint.shapes.custom.Actor();
+            miFigura.position(200,200);
+            miFigura.resize(400,400);
+            miFigura.addTo(graph);
+            console.log(miFigura)
         },
 
         // Create and populate stencil.
