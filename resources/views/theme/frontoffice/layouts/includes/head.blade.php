@@ -4,6 +4,6 @@
 
 <link href="{{asset('/assets/backoffice/css/style.css')}}"  rel="stylesheet">
 <link href="{{asset('/assets/backoffice/css/custom.css')}}"  rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 @yield('head')

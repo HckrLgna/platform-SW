@@ -139,9 +139,6 @@
                 <!-- Modal Trigger -->
                 <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modalCreateBoard"><i class="material-icons">add</i></a>
             </div>
-            <div class="col s8">
-                <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Search" />
-            </div>
             <!-- Modal Structure -->
             <div id="modalCreateBoard" class="modal">
                 <div class="modal-content">

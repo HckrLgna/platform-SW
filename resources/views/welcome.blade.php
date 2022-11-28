@@ -1,8 +1,17 @@
-    <html lang="en"><head>
-        @extends('theme.frontoffice.layouts.includes.head')
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link href="{{asset('/assets/backoffice/css/style.css')}}"  rel="stylesheet">
+        <link href="{{asset('/assets/backoffice/css/custom.css')}}"  rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     </head>
     <body>
-    <header id="header" class="page-topbar">
+        <header id="header" class="page-topbar">
         <!-- start header nav-->
         <div class="navbar-fixed">
             <nav class="navbar-color gradient-45deg-light-blue-cyan">
@@ -20,14 +29,14 @@
 
                     <ul class="right hide-on-med-and-down">
                         @if (Route::has('login'))
-                                @auth
-                                    <li><a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a></li>
-                                @else
-                                    <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
-                                    @if (Route::has('register'))
-                                        <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
-                                    @endif
-                                @endauth
+                            @auth
+                                <li><a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a></li>
+                            @else
+                                <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
+                                @if (Route::has('register'))
+                                    <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
+                                @endif
+                            @endauth
                         @endif
                     </ul>
                 </div>
@@ -35,8 +44,8 @@
         </div>
         <!-- end header nav-->
     </header>
-    <div class="section no-pad-bot" id="index-banner">
-        <div class="container">
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
             <br><br>
             <h1 class="header center orange-text">Platform C4</h1>
             <div class="row center">
@@ -48,8 +57,8 @@
             <br><br>
 
         </div>
-    </div>
-    <div class="container">
+        </div>
+        <div class="container">
         <div class="section">
 
             <!--   Icon Section   -->
@@ -85,8 +94,7 @@
         </div>
         <br><br>
     </div>
-
-    <footer class="page-footer orange">
+        <footer class="page-footer orange">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
@@ -115,16 +123,10 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-            </div>
-        </div>
     </footer>
-
-
     <!--  Scripts-->
-    @extends('theme.frontoffice.layouts.includes.foot')
+        @extends('theme.frontoffice.layouts.includes.foot')
+        <div class="sidenav-overlay"></div><div class="drag-target"></div>
+    </body>
+</html>
 
-    <script src="js/init.js"></script>
-    <div class="sidenav-overlay"></div><div class="drag-target"></div></body></html>

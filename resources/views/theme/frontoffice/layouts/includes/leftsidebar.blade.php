@@ -15,7 +15,7 @@
                 <li class="bold">
                     <a href="#" data-target="slide-out" class="sidenav-trigger grey-text text-darken-1 waves-effect waves-cyan">
                         <i class="material-icons">chat</i>
-                        <span class="nav-text">Profile</span>
+                        <span class="nav-text">Salas de chat</span>
                     </a>
                 </li>
             </ul>

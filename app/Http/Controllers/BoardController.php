@@ -75,7 +75,7 @@ class BoardController extends Controller
         }catch (Exception $exception){
             return $exception;
         }
-        return redirect()->route('frontoffice.dashboard.index',$board);
+        return redirect()->route('frontoffice.dashboard.index');
     }
 
     /**
