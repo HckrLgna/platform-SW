@@ -21,7 +21,7 @@ App.config = App.config || {};
     var options = {
 
         colorPalette: [
-            { content: 'transparent', icon: '/../../assets/transparent-icon.svg' },
+            { content: 'transparent', icon: 'assets/transparent-icon.svg' },
             { content: '#f6f6f6' },
             { content: '#dcd7d7' },
             { content: '#8f8f8f' },
@@ -40,7 +40,7 @@ App.config = App.config || {};
         ],
 
         colorPaletteReset: [
-            { content: undefined, icon: '/../../assets/no-color-icon.svg' },
+            { content: undefined, icon: 'assets/no-color-icon.svg' },
             { content: '#f6f6f6' },
             { content: '#dcd7d7' },
             { content: '#8f8f8f' },
@@ -84,15 +84,15 @@ App.config = App.config || {};
         ],
 
         portLabelPositionRectangle: [
-            { value: { name: 'top', args: { y: -12 }}, content: 'Above' },
-            { value: { name: 'right', args: { y: 0 }}, content: 'On Right' },
-            { value: { name: 'bottom', args: { y: 12 }}, content: 'Below' },
-            { value: { name: 'left', args: { y: 0 }}, content: 'On Left' }
+            { value: { name: 'top', args: { y: -12 } }, content: 'Above' },
+            { value: { name: 'right', args: { y: 0 } }, content: 'On Right' },
+            { value: { name: 'bottom', args: { y: 12 } }, content: 'Below' },
+            { value: { name: 'left', args: { y: 0 } }, content: 'On Left' }
         ],
 
         portLabelPositionEllipse: [
-            { value: 'radial' , content: 'Horizontal' },
-            { value: 'radialOriented' , content: 'Angled' }
+            { value: 'radial', content: 'Horizontal' },
+            { value: 'radialOriented', content: 'Angled' }
         ],
 
         imageIcons: [
@@ -183,7 +183,7 @@ App.config = App.config || {};
                             options: options.strokeWidth,
                             group: 'connection',
                             label: 'Link thickness',
-                            when: { ne: { 'attrs/line/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/line/stroke': 'transparent' } },
                             index: 4
                         },
                         strokeDasharray: {
@@ -191,7 +191,7 @@ App.config = App.config || {};
                             options: options.strokeStyle,
                             group: 'connection',
                             label: 'Link style',
-                            when: { ne: { 'attrs/line/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/line/stroke': 'transparent' } },
                             index: 5
                         },
                         stroke: {
@@ -214,7 +214,7 @@ App.config = App.config || {};
                                 options: options.colorPaletteReset,
                                 group: 'marker-source',
                                 label: 'Color',
-                                when: { ne: { 'attrs/line/sourceMarker/d': 'M 0 0 0 0' }},
+                                when: { ne: { 'attrs/line/sourceMarker/d': 'M 0 0 0 0' } },
                                 index: 2
                             }
                         },
@@ -231,7 +231,7 @@ App.config = App.config || {};
                                 options: options.colorPaletteReset,
                                 group: 'marker-target',
                                 label: 'Color',
-                                when: { ne: { 'attrs/line/targetMarker/d': 'M 0 0 0 0' }},
+                                when: { ne: { 'attrs/line/targetMarker/d': 'M 0 0 0 0' } },
                                 index: 2
                             }
                         }
@@ -252,7 +252,7 @@ App.config = App.config || {};
                             placeholder: 'Pick a side',
                             group: 'connection',
                             label: 'Anchors side',
-                            when: { eq: { 'router/name': 'oneSide' }, otherwise: { unset: true }},
+                            when: { eq: { 'router/name': 'oneSide' }, otherwise: { unset: true } },
                             index: 2
                         }
                     }
@@ -374,7 +374,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 2
                         },
                         fontFamily: {
@@ -382,7 +382,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 3
                         },
                         fontWeight: {
@@ -390,7 +390,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -398,73 +398,15 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 5
                         }
                     },
-                    body: {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'presentation',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'presentation',
-                            index: 2
-                        },
-                        strokeWidth: {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'presentation',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        strokeDasharray: {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'presentation',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/strokeWidth': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    }
-                }
-            },
-            groups: {
-                presentation: {
-                    label: 'Presentation',
-                    index: 1
-                },
-                text: {
-                    label: 'Text',
-                    index: 2
-                }
-            }
-        },
-        'standard.Ellipse': {
-            inputs: {
-                attrs: {
-                    label: {
+                    headerText: {
                         text: {
                             type: 'content-editable',
-                            html: false,
                             label: 'Text',
-                            group: 'text',
+                            group: 'headerText',
                             index: 1
                         },
                         fontSize: {
@@ -473,32 +415,32 @@ App.config = App.config || {};
                             max: 80,
                             unit: 'px',
                             label: 'Font size',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            group: 'headerText',
+                            when: { ne: { 'attrs/headerText/text': '' } },
                             index: 2
                         },
                         fontFamily: {
                             type: 'select-box',
                             options: options.fontFamily,
                             label: 'Font family',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            group: 'headerText',
+                            when: { ne: { 'attrs/headerText/text': '' } },
                             index: 3
                         },
                         fontWeight: {
                             type: 'select-box',
                             options: options.fontWeight,
                             label: 'Font thickness',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            group: 'headerText',
+                            when: { ne: { 'attrs/headerText/text': '' } },
                             index: 4
                         },
                         fill: {
                             type: 'color-palette',
                             options: options.colorPalette,
                             label: 'Fill',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            group: 'headerText',
+                            when: { ne: { 'attrs/headerText/text': '' } },
                             index: 5
                         }
                     },
@@ -526,7 +468,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/body/stroke': 'transparent' } },
                             index: 3
                         },
                         strokeDasharray: {
@@ -536,8 +478,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/stroke-width': 0 }}
+                                    { ne: { 'attrs/body/stroke': 'transparent' } },
+                                    { ne: { 'attrs/body/strokeWidth': 0 } }
                                 ]
                             },
                             index: 4
@@ -553,250 +495,9 @@ App.config = App.config || {};
                 text: {
                     label: 'Text',
                     index: 2
-                }
-            }
-        },
-        'standard.Polygon': {
-            inputs: {
-                attrs: {
-                    label: {
-                        text: {
-                            type: 'content-editable',
-                            html: false,
-                            label: 'Text',
-                            group: 'text',
-                            index: 1
-                        },
-                        fontSize: {
-                            type: 'range',
-                            min: 5,
-                            max: 80,
-                            unit: 'px',
-                            label: 'Font size',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
-                            index: 2
-                        },
-                        fontFamily: {
-                            type: 'select-box',
-                            options: options.fontFamily,
-                            label: 'Font family',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
-                            index: 3
-                        },
-                        fontWeight: {
-                            type: 'select-box',
-                            options: options.fontWeight,
-                            label: 'Font thickness',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
-                            index: 4
-                        },
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
-                            index: 5
-                        }
-                    },
-                    body: {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'presentation',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'presentation',
-                            index: 2
-                        },
-                        strokeWidth: {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'presentation',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        strokeDasharray: {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'presentation',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/strokeWidth': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    }
-                }
-            },
-            groups: {
-                presentation: {
-                    label: 'Presentation',
-                    index: 1
                 },
-                text: {
-                    label: 'Text',
-                    index: 2
-                }
-            }
-        },
-        'standard.Cylinder': {
-            inputs: {
-                attrs: {
-                    label: {
-                        text: {
-                            type: 'content-editable',
-                            html: false,
-                            label: 'Text',
-                            group: 'text',
-                            index: 1
-                        },
-                        fontSize: {
-                            type: 'range',
-                            min: 5,
-                            max: 80,
-                            unit: 'px',
-                            label: 'Font size',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
-                            index: 2
-                        },
-                        fontFamily: {
-                            type: 'select-box',
-                            options: options.fontFamily,
-                            label: 'Font family',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
-                            index: 3
-                        },
-                        fontWeight: {
-                            type: 'select-box',
-                            options: options.fontWeight,
-                            label: 'Font thickness',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
-                            index: 4
-                        },
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
-                            index: 5
-                        }
-                    },
-                    body: {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'presentation',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'presentation',
-                            index: 2
-                        },
-                        strokeWidth: {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'presentation',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        strokeDasharray: {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'presentation',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/strokeWidth': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    },
-                    top: {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'top',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'top',
-                            index: 2
-                        },
-                        strokeWidth: {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'top',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        strokeDasharray: {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'top',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/strokeWidth': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    }
-                }
-            },
-            groups: {
-                presentation: {
-                    label: 'Presentation',
-                    index: 1
-                },
-                top: {
-                    label: 'Top',
-                    index: 2
-                },
-                text: {
-                    label: 'Text',
+                headerText: {
+                    label: 'Header Text',
                     index: 3
                 }
             }
@@ -819,7 +520,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 2
                         },
                         fontFamily: {
@@ -827,7 +528,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 3
                         },
                         fontWeight: {
@@ -835,7 +536,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -843,7 +544,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 5
                         }
                     },
@@ -855,16 +556,58 @@ App.config = App.config || {};
                             group: 'presentation',
                             index: 1
                         }
-                    }
+                    },
+                    headerText: {
+                        text: {
+                            type: 'content-editable',
+                            label: 'Text',
+                            group: 'headerText',
+                            index: 1
+                        },
+                        fontSize: {
+                            type: 'range',
+                            min: 5,
+                            max: 80,
+                            unit: 'px',
+                            label: 'Font size',
+                            group: 'headerText',
+                            when: { ne: { 'attrs/headerText/text': '' } },
+                            index: 2
+                        },
+                        fontFamily: {
+                            type: 'select-box',
+                            options: options.fontFamily,
+                            label: 'Font family',
+                            group: 'headerText',
+                            when: { ne: { 'attrs/headerText/text': '' } },
+                            index: 3
+                        },
+                        fontWeight: {
+                            type: 'select-box',
+                            options: options.fontWeight,
+                            label: 'Font thickness',
+                            group: 'headerText',
+                            when: { ne: { 'attrs/headerText/text': '' } },
+                            index: 4
+                        },
+                        fill: {
+                            type: 'color-palette',
+                            options: options.colorPalette,
+                            label: 'Fill',
+                            group: 'headerText',
+                            when: { ne: { 'attrs/headerText/text': '' } },
+                            index: 5
+                        }
+                    },
                 }
             },
             groups: {
-                presentation: {
-                    label: 'Presentation',
-                    index: 1
-                },
                 text: {
                     label: 'Text',
+                    index: 1
+                },
+                headerText: {
+                    label: 'Header Text',
                     index: 2
                 }
             }
@@ -887,7 +630,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 2
                         },
                         fontFamily: {
@@ -895,7 +638,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 3
                         },
                         fontWeight: {
@@ -903,7 +646,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -911,7 +654,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 5
                         }
                     },
@@ -950,7 +693,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/border/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/border/stroke': 'transparent' } },
                             index: 4
                         }
                     }
@@ -984,7 +727,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 2
                         },
                         fontFamily: {
@@ -992,7 +735,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 3
                         },
                         fontWeight: {
@@ -1000,7 +743,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -1008,7 +751,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 5
                         }
                     },
@@ -1036,7 +779,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/body/stroke': 'transparent' } },
                             index: 3
                         },
                         strokeDasharray: {
@@ -1046,8 +789,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/strokeWidth': 0 }}
+                                    { ne: { 'attrs/body/stroke': 'transparent' } },
+                                    { ne: { 'attrs/body/strokeWidth': 0 } }
                                 ]
                             },
                             index: 4
@@ -1098,7 +841,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/bodyText/text': '' }},
+                            when: { ne: { 'attrs/bodyText/text': '' } },
                             index: 2
                         },
                         fontFamily: {
@@ -1106,7 +849,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/bodyText/text': '' }},
+                            when: { ne: { 'attrs/bodyText/text': '' } },
                             index: 3
                         },
                         fontWeight: {
@@ -1114,7 +857,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/bodyText/text': '' }},
+                            when: { ne: { 'attrs/bodyText/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -1122,7 +865,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/boduText/text': '' }},
+                            when: { ne: { 'attrs/boduText/text': '' } },
                             index: 5
                         }
                     },
@@ -1140,7 +883,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'headerText',
-                            when: { ne: { 'attrs/headerText/text': '' }},
+                            when: { ne: { 'attrs/headerText/text': '' } },
                             index: 2
                         },
                         fontFamily: {
@@ -1148,7 +891,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'headerText',
-                            when: { ne: { 'attrs/headerText/text': '' }},
+                            when: { ne: { 'attrs/headerText/text': '' } },
                             index: 3
                         },
                         fontWeight: {
@@ -1156,7 +899,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'headerText',
-                            when: { ne: { 'attrs/headerText/text': '' }},
+                            when: { ne: { 'attrs/headerText/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -1164,7 +907,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'headerText',
-                            when: { ne: { 'attrs/headerText/text': '' }},
+                            when: { ne: { 'attrs/headerText/text': '' } },
                             index: 5
                         }
                     },
@@ -1192,7 +935,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/body/stroke': 'transparent' } },
                             index: 3
                         },
                         strokeDasharray: {
@@ -1202,8 +945,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/strokeWidth': 0 }}
+                                    { ne: { 'attrs/body/stroke': 'transparent' } },
+                                    { ne: { 'attrs/body/strokeWidth': 0 } }
                                 ]
                             },
                             index: 4
@@ -1233,7 +976,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'header',
-                            when: { ne: { 'attrs/header/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/header/stroke': 'transparent' } },
                             index: 3
                         },
                         strokeDasharray: {
@@ -1243,8 +986,8 @@ App.config = App.config || {};
                             group: 'header',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/header/stroke': 'transparent' }},
-                                    { ne: { 'attrs/header/strokeWidth': 0 }}
+                                    { ne: { 'attrs/header/stroke': 'transparent' } },
+                                    { ne: { 'attrs/header/strokeWidth': 0 } }
                                 ]
                             },
                             index: 4
@@ -1288,7 +1031,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 2
                         },
                         fontFamily: {
@@ -1296,7 +1039,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 3
                         },
                         fontWeight: {
@@ -1304,7 +1047,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -1312,7 +1055,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 5
                         }
                     },
@@ -1340,7 +1083,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/body/stroke': 'transparent' } },
                             index: 3
                         },
                         strokeDasharray: {
@@ -1350,8 +1093,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/strokeWidth': 0 }}
+                                    { ne: { 'attrs/body/stroke': 'transparent' } },
+                                    { ne: { 'attrs/body/strokeWidth': 0 } }
                                 ]
                             },
                             index: 4
@@ -1399,7 +1142,7 @@ App.config = App.config || {};
                                         type: 'color-palette',
                                         options: options.colorPalette,
                                         label: 'Fill',
-                                        when: { not: { equal: { inPorts: [] }}},
+                                        when: { not: { equal: { inPorts: [] } } },
                                         group: 'inPorts',
                                         index: 1
                                     }
@@ -1410,7 +1153,7 @@ App.config = App.config || {};
                                     type: 'select-box',
                                     options: options.side,
                                     label: 'Position',
-                                    when: { not: { equal: { inPorts: [] }}},
+                                    when: { not: { equal: { inPorts: [] } } },
                                     group: 'inPorts',
                                     index: 3
                                 }
@@ -1420,7 +1163,7 @@ App.config = App.config || {};
                                     type: 'select-box',
                                     options: options.portLabelPositionRectangle,
                                     label: 'Text Position',
-                                    when: { not: { equal: { inPorts: [] }}},
+                                    when: { not: { equal: { inPorts: [] } } },
                                     group: 'inPorts',
                                     index: 4
                                 }
@@ -1441,7 +1184,7 @@ App.config = App.config || {};
                                         type: 'color-palette',
                                         options: options.colorPalette,
                                         label: 'Fill',
-                                        when: { not: { equal: { outPorts: [] }}},
+                                        when: { not: { equal: { outPorts: [] } } },
                                         group: 'outPorts',
                                         index: 2
                                     }
@@ -1452,7 +1195,7 @@ App.config = App.config || {};
                                     type: 'select-box',
                                     options: options.side,
                                     label: 'Position',
-                                    when: { not: { equal: { outPorts: [] }}},
+                                    when: { not: { equal: { outPorts: [] } } },
                                     group: 'outPorts',
                                     index: 4
                                 }
@@ -1462,7 +1205,7 @@ App.config = App.config || {};
                                     type: 'select-box',
                                     options: options.portLabelPositionRectangle,
                                     label: 'Text Position',
-                                    when: { not: { equal: { outPorts: [] }}},
+                                    when: { not: { equal: { outPorts: [] } } },
                                     group: 'outPorts',
                                     index: 5
                                 }
@@ -1519,7 +1262,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 2
                         },
                         fontFamily: {
@@ -1527,7 +1270,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 3
                         },
                         fontWeight: {
@@ -1535,7 +1278,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -1543,7 +1286,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/label/text': '' }},
+                            when: { ne: { 'attrs/label/text': '' } },
                             index: 5
                         }
                     },
@@ -1571,7 +1314,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/body/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/body/stroke': 'transparent' } },
                             index: 3
                         },
                         strokeDasharray: {
@@ -1581,8 +1324,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/body/strokeWidth': 0 }}
+                                    { ne: { 'attrs/body/stroke': 'transparent' } },
+                                    { ne: { 'attrs/body/strokeWidth': 0 } }
                                 ]
                             },
                             index: 4
@@ -1630,7 +1373,7 @@ App.config = App.config || {};
                                         type: 'color-palette',
                                         options: options.colorPalette,
                                         label: 'Fill',
-                                        when: { not: { equal: { 'ports/items': [] }}},
+                                        when: { not: { equal: { 'ports/items': [] } } },
                                         group: 'inPorts',
                                         index: 1
                                     }
@@ -1641,12 +1384,12 @@ App.config = App.config || {};
                                     startAngle: {
                                         type: 'range',
                                         min: 0,
-                                        max: 360,
+                                        max: 1360,
                                         step: 1,
                                         defaultValue: 0,
                                         unit: '°',
                                         label: 'Position',
-                                        when: { not: { equal: { 'ports/items': [] }}},
+                                        when: { not: { equal: { 'ports/items': [] } } },
                                         group: 'inPorts',
                                         index: 3
                                     }
@@ -1658,7 +1401,7 @@ App.config = App.config || {};
                                         type: 'select-button-group',
                                         options: options.portLabelPositionEllipse,
                                         label: 'Text direction',
-                                        when: { not: { equal: { 'ports/items': [] }}},
+                                        when: { not: { equal: { 'ports/items': [] } } },
                                         group: 'inPorts',
                                         index: 4
                                     }
@@ -1680,7 +1423,7 @@ App.config = App.config || {};
                                         type: 'color-palette',
                                         options: options.colorPalette,
                                         label: 'Fill',
-                                        when: { not: { equal: { 'ports/items': [] }}},
+                                        when: { not: { equal: { 'ports/items': [] } } },
                                         group: 'outPorts',
                                         index: 2
                                     }
@@ -1696,7 +1439,7 @@ App.config = App.config || {};
                                         defaultValue: 180,
                                         unit: '°',
                                         label: 'Position',
-                                        when: { not: { equal: { 'ports/items': [] }}},
+                                        when: { not: { equal: { 'ports/items': [] } } },
                                         group: 'outPorts',
                                         index: 4
                                     }
@@ -1708,7 +1451,7 @@ App.config = App.config || {};
                                         type: 'select-button-group',
                                         options: options.portLabelPositionEllipse,
                                         label: 'Text Position',
-                                        when: { not: { equal: { 'ports/items': [] }}},
+                                        when: { not: { equal: { 'ports/items': [] } } },
                                         group: 'outPorts',
                                         index: 5
                                     }
@@ -1795,8 +1538,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
+                                    { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.outer/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -1841,7 +1584,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 2
                         },
                         'font-family': {
@@ -1849,7 +1592,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 3
                         },
                         'font-weight': {
@@ -1857,7 +1600,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -1865,7 +1608,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 5
                         }
                     },
@@ -1893,7 +1636,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/circle/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/circle/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -1903,8 +1646,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/circle/stroke': 'transparent' }},
-                                    { ne: { 'attrs/circle/stroke-width': 0 }}
+                                    { ne: { 'attrs/circle/stroke': 'transparent' } },
+                                    { ne: { 'attrs/circle/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -1940,7 +1683,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/.label/text': '' }},
+                            when: { ne: { 'attrs/.label/text': '' } },
                             index: 2
                         },
                         'font-family': {
@@ -1948,7 +1691,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/.label/text': '' }},
+                            when: { ne: { 'attrs/.label/text': '' } },
                             index: 3
                         },
                         'font-weight': {
@@ -1956,7 +1699,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/.label/text': '' }},
+                            when: { ne: { 'attrs/.label/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -1964,7 +1707,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/.label/text': '' }},
+                            when: { ne: { 'attrs/.label/text': '' } },
                             index: 5
                         }
                     },
@@ -1992,7 +1735,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/.root/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.root/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2002,8 +1745,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.root/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.root/stroke-width': 0 }}
+                                    { ne: { 'attrs/.root/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.root/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2050,7 +1793,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/.label/text': '' }},
+                            when: { ne: { 'attrs/.label/text': '' } },
                             index: 2
                         },
                         'font-family': {
@@ -2058,7 +1801,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/.label/text': '' }},
+                            when: { ne: { 'attrs/.label/text': '' } },
                             index: 3
                         },
                         'font-weight': {
@@ -2066,7 +1809,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/.label/text': '' }},
+                            when: { ne: { 'attrs/.label/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -2074,7 +1817,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/.label/text': '' }},
+                            when: { ne: { 'attrs/.label/text': '' } },
                             index: 5
                         }
                     },
@@ -2102,7 +1845,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/rect/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/rect/stroke': 'transparent' } },
                             index: 2
                         },
                         'stroke-dasharray': {
@@ -2112,8 +1855,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/rect/stroke': 'transparent' }},
-                                    { ne: { 'attrs/rect/stroke-width': 0 }}
+                                    { ne: { 'attrs/rect/stroke': 'transparent' } },
+                                    { ne: { 'attrs/rect/stroke-width': 0 } }
                                 ]
                             },
                             index: 3
@@ -2149,7 +1892,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 2
                         },
                         'font-family': {
@@ -2157,7 +1900,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 3
                         },
                         'font-weight': {
@@ -2165,7 +1908,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -2173,7 +1916,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 5
                         }
                     },
@@ -2201,7 +1944,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/.outer/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.outer/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2211,8 +1954,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
+                                    { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.outer/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2248,7 +1991,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 2
                         },
                         'font-family': {
@@ -2256,7 +1999,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 3
                         },
                         'font-weight': {
@@ -2264,7 +2007,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -2272,7 +2015,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 5
                         }
                     },
@@ -2300,7 +2043,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'outer',
-                            when: { ne: { 'attrs/.outer/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.outer/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2310,8 +2053,8 @@ App.config = App.config || {};
                             group: 'outer',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
+                                    { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.outer/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2341,7 +2084,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'inner',
-                            when: { ne: { 'attrs/.inner/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.inner/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2351,8 +2094,8 @@ App.config = App.config || {};
                             group: 'inner',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.inner/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.inner/stroke-width': 0 }}
+                                    { ne: { 'attrs/.inner/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.inner/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2392,7 +2135,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 2
                         },
                         'font-family': {
@@ -2400,7 +2143,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 3
                         },
                         'font-weight': {
@@ -2408,7 +2151,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -2416,7 +2159,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 5
                         }
                     },
@@ -2444,7 +2187,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'presentation',
-                            when: { ne: { 'attrs/.outer/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.outer/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2454,8 +2197,8 @@ App.config = App.config || {};
                             group: 'presentation',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
+                                    { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.outer/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2491,7 +2234,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 2
                         },
                         'font-family': {
@@ -2499,7 +2242,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 3
                         },
                         'font-weight': {
@@ -2507,7 +2250,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -2515,7 +2258,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 5
                         }
                     },
@@ -2543,7 +2286,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'outer',
-                            when: { ne: { 'attrs/.outer/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.outer/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2553,8 +2296,8 @@ App.config = App.config || {};
                             group: 'outer',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
+                                    { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.outer/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2584,7 +2327,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'inner',
-                            when: { ne: { 'attrs/.inner/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.inner/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2594,8 +2337,8 @@ App.config = App.config || {};
                             group: 'inner',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.inner/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.inner/stroke-width': 0 }}
+                                    { ne: { 'attrs/.inner/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.inner/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2635,7 +2378,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Font size',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 2
                         },
                         'font-family': {
@@ -2643,7 +2386,7 @@ App.config = App.config || {};
                             options: options.fontFamily,
                             label: 'Font family',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 3
                         },
                         'font-weight': {
@@ -2651,7 +2394,7 @@ App.config = App.config || {};
                             options: options.fontWeight,
                             label: 'Font thickness',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 4
                         },
                         fill: {
@@ -2659,7 +2402,7 @@ App.config = App.config || {};
                             options: options.colorPalette,
                             label: 'Fill',
                             group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
+                            when: { ne: { 'attrs/text/text': '' } },
                             index: 5
                         }
                     },
@@ -2687,7 +2430,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'outer',
-                            when: { ne: { 'attrs/.outer/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.outer/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2697,8 +2440,8 @@ App.config = App.config || {};
                             group: 'outer',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
+                                    { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.outer/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2728,7 +2471,7 @@ App.config = App.config || {};
                             unit: 'px',
                             label: 'Outline thickness',
                             group: 'inner',
-                            when: { ne: { 'attrs/.inner/stroke': 'transparent' }},
+                            when: { ne: { 'attrs/.inner/stroke': 'transparent' } },
                             index: 3
                         },
                         'stroke-dasharray': {
@@ -2738,8 +2481,8 @@ App.config = App.config || {};
                             group: 'inner',
                             when: {
                                 and: [
-                                    { ne: { 'attrs/.inner/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.inner/stroke-width': 0 }}
+                                    { ne: { 'attrs/.inner/stroke': 'transparent' } },
+                                    { ne: { 'attrs/.inner/stroke-width': 0 } }
                                 ]
                             },
                             index: 4
@@ -2759,1028 +2502,6 @@ App.config = App.config || {};
                 inner: {
                     label: 'Inner ellipse',
                     index: 3
-                }
-            }
-        },
-        'erd.Normal': {
-            inputs: {
-                attrs: {
-                    text: {
-                        text: {
-                            type: 'content-editable',
-                            label: 'Text',
-                            group: 'text',
-                            index: 1
-                        },
-                        'font-size': {
-                            type: 'range',
-                            min: 5,
-                            max: 80,
-                            unit: 'px',
-                            label: 'Font size',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 2
-                        },
-                        'font-family': {
-                            type: 'select-box',
-                            options: options.fontFamily,
-                            label: 'Font family',
-                            group: 'text',
-                            index: 3
-                        },
-                        'font-weight': {
-                            type: 'select-box',
-                            options: options.fontWeight,
-                            label: 'Font thickness',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 4
-                        },
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 5
-                        }
-                    },
-                    '.outer': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'presentation',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'presentation',
-                            index: 2
-                        },
-                        'stroke-width': {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'presentation',
-                            when: { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        'stroke-dasharray': {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'presentation',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    }
-                }
-            },
-            groups: {
-                presentation: {
-                    label: 'Presentation',
-                    index: 1
-                },
-                text: {
-                    label: 'Text',
-                    index: 2
-                }
-            }
-        },
-        'erd.Multivalued': {
-            inputs: {
-                attrs: {
-                    text: {
-                        text: {
-                            type: 'content-editable',
-                            label: 'Text',
-                            group: 'text',
-                            index: 1
-                        },
-                        'font-size': {
-                            type: 'range',
-                            min: 5,
-                            max: 80,
-                            unit: 'px',
-                            label: 'Font size',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 2
-                        },
-                        'font-family': {
-                            type: 'select-box',
-                            options: options.fontFamily,
-                            label: 'Font family',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 3
-                        },
-                        'font-weight': {
-                            type: 'select-box',
-                            options: options.fontWeight,
-                            label: 'Font thickness',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 4
-                        },
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 5
-                        }
-                    },
-                    '.outer': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'outer',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'outer',
-                            index: 2
-                        },
-                        'stroke-width': {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'outer',
-                            when: { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        'stroke-dasharray': {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'outer',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    },
-                    '.inner': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'inner',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'inner',
-                            index: 2
-                        },
-                        'stroke-width': {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'inner',
-                            when: { ne: { 'attrs/.inner/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        'stroke-dasharray': {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'inner',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/.inner/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.inner/stroke-width': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    }
-                }
-            },
-            groups: {
-                text: {
-                    label: 'Text',
-                    index: 1
-                },
-                outer: {
-                    label: 'Outer ellipse',
-                    index: 2
-                },
-                inner: {
-                    label: 'Inner ellipse',
-                    index: 3
-                }
-            }
-        },
-        'erd.Derived': {
-            inputs: {
-                attrs: {
-                    text: {
-                        text: {
-                            type: 'content-editable',
-                            label: 'Text',
-                            group: 'text',
-                            index: 1
-                        },
-                        'font-size': {
-                            type: 'range',
-                            min: 5,
-                            max: 80,
-                            unit: 'px',
-                            label: 'Font size',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 2
-                        },
-                        'font-family': {
-                            type: 'select-box',
-                            options: options.fontFamily,
-                            label: 'Font family',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 3
-                        },
-                        'font-weight': {
-                            type: 'select-box',
-                            options: options.fontWeight,
-                            label: 'Font thickness',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 4
-                        },
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 5
-                        }
-                    },
-                    '.outer': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'outer',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'outer',
-                            index: 2
-                        },
-                        'stroke-width': {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'outer',
-                            when: { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        'stroke-dasharray': {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'outer',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/.outer/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.outer/stroke-width': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    },
-                    '.inner': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'inner',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'inner',
-                            index: 2
-                        },
-                        'stroke-width': {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'inner',
-                            when: { ne: { 'attrs/.inner/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        'stroke-dasharray': {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'inner',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/.inner/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.inner/stroke-width': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    }
-                }
-            },
-            groups: {
-                text: {
-                    label: 'Text',
-                    index: 1
-                },
-                outer: {
-                    label: 'Outer ellipse',
-                    index: 2
-                },
-                inner: {
-                    label: 'Inner ellipse',
-                    index: 3
-                }
-            }
-        },
-        'erd.ISA': {
-            inputs: {
-                attrs: {
-                    text: {
-                        text: {
-                            type: 'content-editable',
-                            label: 'Text',
-                            group: 'text',
-                            index: 1
-                        },
-                        'font-size': {
-                            type: 'range',
-                            min: 5,
-                            max: 80,
-                            unit: 'px',
-                            label: 'Font size',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 2
-                        },
-                        'font-family': {
-                            type: 'select-box',
-                            options: options.fontFamily,
-                            label: 'Font family',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 3
-                        },
-                        'font-weight': {
-                            type: 'select-box',
-                            options: options.fontWeight,
-                            label: 'Font thickness',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 4
-                        },
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'text',
-                            when: { ne: { 'attrs/text/text': '' }},
-                            index: 5
-                        }
-                    },
-                    polygon: {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'presentation',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'presentation',
-                            index: 2
-                        },
-                        'stroke-width': {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'presentation',
-                            when: { ne: { 'attrs/polygon/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        'stroke-dasharray': {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'presentation',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/polygon/stroke': 'transparent' }},
-                                    { ne: { 'attrs/polygon/stroke-width': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    }
-                }
-            },
-            groups: {
-                presentation: {
-                    label: 'Presentation',
-                    index: 1
-                },
-                text: {
-                    label: 'Text',
-                    index: 2
-                }
-            }
-        },
-        'uml.Class': {
-            inputs: {
-                attrs: {
-                    '.uml-class-name-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'name',
-                            index: 4
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'name',
-                            index: 5
-                        }
-                    },
-                    '.uml-class-attrs-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'attributes',
-                            index: 4
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'attributes',
-                            index: 5
-                        }
-                    },
-                    '.uml-class-methods-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'methods',
-                            index: 4
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'methods',
-                            index: 5
-                        }
-                    }
-                },
-                name: {
-                    type: 'text',
-                    group: 'name',
-                    index: 1,
-                    label: 'Class name'
-                },
-                attributes: {
-                    type: 'list',
-                    item: {
-                        type: 'text'
-                    },
-                    group: 'attributes',
-                    index: 1,
-                    label: 'Attributes'
-                },
-                methods: {
-                    type: 'list',
-                    item: {
-                        type: 'text'
-                    },
-                    group: 'methods',
-                    index: 1,
-                    label: 'Methods'
-                }
-            },
-            groups: {
-                name: {
-                    label: 'Class name',
-                    index: 1
-                },
-                attributes: {
-                    label: 'Attributes',
-                    index: 2
-                },
-                methods: {
-                    label: 'Methods',
-                    index: 3
-                }
-            }
-        },
-        'uml.Interface': {
-            inputs: {
-                attrs: {
-                    '.uml-class-name-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'name',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'name',
-                            index: 2
-                        }
-                    },
-                    '.uml-class-attrs-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'attributes',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'attributes',
-                            index: 2
-                        }
-                    },
-                    '.uml-class-methods-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'methods',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'methods',
-                            index: 2
-                        }
-                    }
-                },
-                name: {
-                    type: 'text',
-                    group: 'name',
-                    index: 0,
-                    label: 'Interface name'
-                },
-                attributes: {
-                    type: 'list',
-                    item: {
-                        type: 'text'
-                    },
-                    group: 'attributes',
-                    index: 0,
-                    label: 'Attributes'
-                },
-                methods: {
-                    type: 'list',
-                    item: {
-                        type: 'text'
-                    },
-                    group: 'methods',
-                    index: 0,
-                    label: 'Methods'
-                }
-            },
-            groups: {
-                name: {
-                    label: 'Interface name',
-                    index: 1
-                },
-                attributes: {
-                    label: 'Attributes',
-                    index: 2
-                },
-                methods: {
-                    label: 'Methods',
-                    index: 3
-                }
-            }
-        },
-        'uml.Abstract': {
-            inputs: {
-                attrs: {
-                    '.uml-class-name-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'name',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'name',
-                            index: 2
-                        }
-                    },
-                    '.uml-class-attrs-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'attributes',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'attributes',
-                            index: 2
-                        }
-                    },
-                    '.uml-class-methods-rect': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'methods',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'methods',
-                            index: 2
-                        }
-                    }
-                },
-                name: {
-                    type: 'text',
-                    group: 'name',
-                    index: 0,
-                    label: 'Abstract class name'
-                },
-                attributes: {
-                    type: 'list',
-                    item: {
-                        type: 'text'
-                    },
-                    group: 'attributes',
-                    index: 0,
-                    label: 'Attributes'
-                },
-                methods: {
-                    type: 'list',
-                    item: {
-                        type: 'text'
-                    },
-                    group: 'methods',
-                    index: 0,
-                    label: 'Methods'
-                }
-            },
-            groups: {
-                name: {
-                    label: 'Abstract class name',
-                    index: 1
-                },
-                attributes: {
-                    label: 'Attributes Text',
-                    index: 2
-                },
-                methods: {
-                    label: 'Methods Text',
-                    index: 3
-                }
-            }
-        },
-        'uml.State': {
-            inputs: {
-                name: {
-                    group: 'text',
-                    index: 1,
-                    type: 'text'
-                },
-                events: {
-                    group: 'events',
-                    index: 1,
-                    type: 'list',
-                    item: {
-                        type: 'text'
-                    }
-                },
-                attrs: {
-                    '.uml-state-name': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'text',
-                            when: { ne: { 'name': '' }},
-                            index: 5
-                        }
-                    },
-                    '.uml-state-body': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'presentation',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'presentation',
-                            index: 2
-                        },
-                        'stroke-width': {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'presentation',
-                            when: { ne: { 'attrs/.uml-state-body/stroke': 'transparent' }},
-                            index: 4
-                        },
-                        'stroke-dasharray': {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'presentation',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/.uml-state-body/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.uml-state-body/stroke-width': 0 }}
-                                ]
-                            },
-                            index: 5
-                        }
-                    },
-                    '.uml-state-separator': {
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Horizontal rule outline',
-                            group: 'presentation',
-                            index: 3
-                        }
-                    },
-                    '.uml-state-events': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'events',
-                            when: { ne: { 'events': 0 }},
-                            index: 5
-                        }
-                    }
-                }
-            },
-            groups: {
-                presentation: {
-                    label: 'Presentation',
-                    index: 1
-                },
-                text: {
-                    label: 'State name text',
-                    index: 2
-                },
-                events: {
-                    label: 'State events text',
-                    index: 3
-                }
-            }
-        },
-        'org.Member': {
-            inputs: {
-                attrs: {
-                    '.rank': {
-                        text: {
-                            type: 'content-editable',
-                            label: 'Text',
-                            group: 'rank',
-                            index: 1
-                        },
-                        'font-size': {
-                            type: 'range',
-                            min: 5,
-                            max: 80,
-                            unit: 'px',
-                            label: 'Font size',
-                            group: 'rank',
-                            when: { ne: { 'attrs/.rank/text': '' }},
-                            index: 2
-                        },
-                        'font-family': {
-                            type: 'select-box',
-                            options: options.fontFamily,
-                            label: 'Font family',
-                            group: 'rank',
-                            when: { ne: { 'attrs/.rank/text': '' }},
-                            index: 3
-                        },
-                        'font-weight': {
-                            type: 'select-box',
-                            options: options.fontWeight,
-                            label: 'Font thickness',
-                            group: 'rank',
-                            when: { ne: { 'attrs/.rank/text': '' }},
-                            index: 4
-                        },
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'rank',
-                            when: { ne: { 'attrs/.rank/text': '' }},
-                            index: 5
-                        }
-                    },
-                    '.name': {
-                        text: {
-                            type: 'content-editable',
-                            label: 'Text',
-                            group: 'name',
-                            index: 1
-                        },
-                        'font-size': {
-                            type: 'range',
-                            min: 5,
-                            max: 80,
-                            unit: 'px',
-                            label: 'Font size',
-                            group: 'name',
-                            when: { ne: { 'attrs/.name/text': '' }},
-                            index: 2
-                        },
-                        'font-family': {
-                            type: 'select-box',
-                            options: options.fontFamily,
-                            label: 'Font family',
-                            group: 'name',
-                            when: { ne: { 'attrs/.name/text': '' }},
-                            index: 3
-                        },
-                        'font-weight': {
-                            type: 'select-box',
-                            options: options.fontWeight,
-                            label: 'Font thickness',
-                            group: 'name',
-                            when: { ne: { 'attrs/.name/text': '' }},
-                            index: 4
-                        },
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'name',
-                            when: { ne: { 'attrs/.name/text': '' }},
-                            index: 5
-                        }
-                    },
-                    '.card': {
-                        fill: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Fill',
-                            group: 'presentation',
-                            index: 1
-                        },
-                        stroke: {
-                            type: 'color-palette',
-                            options: options.colorPalette,
-                            label: 'Outline',
-                            group: 'presentation',
-                            index: 2
-                        },
-                        'stroke-width': {
-                            type: 'range',
-                            min: 0,
-                            max: 30,
-                            step: 1,
-                            defaultValue: 1,
-                            unit: 'px',
-                            label: 'Outline thickness',
-                            group: 'presentation',
-                            when: { ne: { 'attrs/.card/stroke': 'transparent' }},
-                            index: 3
-                        },
-                        'stroke-dasharray': {
-                            type: 'select-box',
-                            options: options.strokeStyle,
-                            label: 'Outline style',
-                            group: 'presentation',
-                            when: {
-                                and: [
-                                    { ne: { 'attrs/.card/stroke': 'transparent' }},
-                                    { ne: { 'attrs/.card/stroke-width': 0 }}
-                                ]
-                            },
-                            index: 4
-                        }
-                    },
-                    image: {
-                        'xlink:href': {
-                            type: 'select-button-group',
-                            options: options.imageGender,
-                            label: 'Gender',
-                            group: 'gender',
-                            index: 1
-                        }
-                    }
-                }
-            },
-            groups: {
-                presentation: {
-                    label: 'Presentation',
-                    index: 4
-                },
-                rank: {
-                    label: 'Rank',
-                    index: 2
-                },
-                name: {
-                    label: 'Name',
-                    index: 3
-                },
-                gender: {
-                    label: 'Gender',
-                    index: 1
                 }
             }
         }

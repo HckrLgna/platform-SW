@@ -22,200 +22,24 @@ App.config = App.config || {};
 
     App.config.stencil.groups = {
         standard: { index: 1, label: 'Standard shapes' },
+        fsa: { index: 2, label: 'State machine' },
     };
 
     App.config.stencil.shapes = {};
 
     App.config.stencil.shapes.standard = [
+        //container web
         {
-            type: 'standard.Rectangle',
-            size: { width: 5, height: 3 },
+            type: 'standard.Image',
+            size: { width: 53, height: 42 },
             attrs: {
                 root: {
-                    dataTooltip: 'Rectangle',
+                    dataTooltip: 'Container web',
                     dataTooltipPosition: 'left',
                     dataTooltipPositionSelector: '.joint-stencil'
                 },
-                body: {
-                    rx: 2,
-                    ry: 2,
-                    width: 50,
-                    height: 30,
-                    fill: 'transparent',
-                    stroke: '#31d0c6',
-                    strokeWidth: 2,
-                    strokeDasharray: '0'
-                },
-                label: {
-                    text: 'rect',
-                    fill: '#c6c7e2',
-                    fontFamily: 'Roboto Condensed',
-                    fontWeight: 'Normal',
-                    fontSize: 11,
-                    strokeWidth: 0
-                }
-            }
-        },
-        {
-            type: 'standard.Ellipse',
-            size: { width: 5, height: 3 },
-            attrs: {
-                root: {
-                    dataTooltip: 'Ellipse',
-                    dataTooltipPosition: 'left',
-                    dataTooltipPositionSelector: '.joint-stencil'
-                },
-                body: {
-                    width: 50,
-                    height: 30,
-                    fill: 'transparent',
-                    stroke: '#31d0c6',
-                    strokeWidth: 2,
-                    strokeDasharray: '0'
-                },
-                label: {
-                    text: 'ellipse',
-                    fill: '#c6c7e2',
-                    fontFamily: 'Roboto Condensed',
-                    fontWeight: 'Normal',
-                    fontSize: 11,
-                    strokeWidth: 0
-                }
-            }
-        },
-        {
-            type: 'app.RectangularModel',
-            size: { width: 40, height: 30 },
-            allowOrthogonalResize: false,
-            attrs: {
-                root: {
-                    dataTooltip: 'Rectangle with ports',
-                    dataTooltipPosition: 'left',
-                    dataTooltipPositionSelector: '.joint-stencil'
-                },
-                body: {
-                    fill: 'transparent',
-                    rx: 2,
-                    ry: 2,
-                    stroke: '#31d0c6',
-                    strokeWidth: 2,
-                    strokeDasharray: '0'
-                },
-                label: {
-                    text: 'rect',
-                    fill: '#c6c7e2',
-                    fontFamily: 'Roboto Condensed',
-                    fontWeight: 'Normal',
-                    fontSize: 11,
-                    strokeWidth: 0
-                }
-            },
-            ports: {
-                items: [
-                    { group: 'in' },
-                    { group: 'in' },
-                    { group: 'out' }
-                ]
-            }
-        },
-        {
-            type: 'app.CircularModel',
-            size: { width: 5, height: 3 },
-            allowOrthogonalResize: false,
-            attrs: {
-                root: {
-                    dataTooltip: 'Ellipse with ports',
-                    dataTooltipPosition: 'left',
-                    dataTooltipPositionSelector: '.joint-stencil'
-                },
-                body: {
-                    fill: 'transparent',
-                    stroke: '#31d0c6',
-                    strokeWidth: 2,
-                    strokeDasharray: '0',
-                },
-                label: {
-                    text: 'ellipse',
-                    fill: '#c6c7e2',
-                    fontFamily: 'Roboto Condensed',
-                    fontWeight: 'Normal',
-                    fontSize: 11,
-                    strokeWidth: 0
-                }
-            },
-            ports: {
-                items: [
-                    { group: 'in' },
-                    { group: 'in' },
-                    { group: 'out' }
-                ]
-            }
-        },
-        {
-            type: 'standard.Polygon',
-            size: { width: 5, height: 3 },
-            attrs: {
-                root: {
-                    dataTooltip: 'Rhombus',
-                    dataTooltipPosition: 'left',
-                    dataTooltipPositionSelector: '.joint-stencil'
-                },
-                body: {
-                    refPoints: '50,0 100,50 50,100 0,50',
-                    fill: 'transparent',
-                    stroke: '#31d0c6',
-                    strokeWidth: 2,
-                    strokeDasharray: '0'
-                },
-                label: {
-                    text: 'rhombus',
-                    fill: '#c6c7e2',
-                    fontFamily: 'Roboto Condensed',
-                    fontWeight: 'Normal',
-                    fontSize: 11,
-                    strokeWidth: 0
-                }
-            }
-        },
-        {
-            type: 'standard.Cylinder',
-            size: { width: 5, height: 3 },
-            attrs: {
-                root: {
-                    dataTooltip: 'Cylinder',
-                    dataTooltipPosition: 'left',
-                    dataTooltipPositionSelector: '.joint-stencil'
-                },
-                body: {
-                    fill: 'transparent',
-                    stroke: '#31d0c6',
-                    strokeWidth: 2,
-                    strokeDasharray: '0'
-                },
-                top: {
-                    fill: '#31d0c6',
-                    stroke: '#31d0c6',
-                    strokeWidth: 2,
-                    strokeDasharray: '0'
-                },
-                label: {
-                    text: 'cylinder',
-                    fill: '#c6c7e2',
-                    fontFamily: 'Roboto Condensed',
-                    fontWeight: 'Normal',
-                    fontSize: 11,
-                    strokeWidth: 0
-                }
-            }
-        },
-        {
-            type: 'standard.HeaderedRectangle',
-            size: { width: 5, height: 3 },
-            attrs: {
-                root: {
-                    dataTooltip: 'Rectangle with header',
-                    dataTooltipPosition: 'left',
-                    dataTooltipPositionSelector: '.joint-stencil'
+                image: {
+                    xlinkHref: '../../assets/container-web.svg'
                 },
                 body: {
                     fill: 'transparent',
@@ -230,32 +54,294 @@ App.config = App.config || {};
                     strokeDasharray: '0',
                     height: 20
                 },
-                bodyText: {
-                    textWrap: {
-                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie.',
-                        width: -10,
-                        height: -20,
-                        ellipsis: true
-                    },
-                    fill: '#c6c7e2',
+                label: {
+                    text: 'Description of web browser container role',
                     fontFamily: 'Roboto Condensed',
                     fontWeight: 'Normal',
                     fontSize: 11,
-                    strokeWidth: 0,
-                    refY2: 12,
+                    fill: '#c6c7e2'
                 },
                 headerText: {
-                    text: 'header',
-                    fill: '#f6f6f6',
+                    text: 'Container',
+                    fill: '#ffffff',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 15,
+                    strokeWidth: 0,
+                    refY: "50%"
+                }
+            }
+        },
+        //person
+        {
+            type: 'standard.Image',
+            size: { width: 53, height: 42 },
+            attrs: {
+                root: {
+                    dataTooltip: 'Person',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+                image: {
+                    xlinkHref: '../../assets/person.svg'
+                },
+                body: {
+                    fill: 'transparent',
+                    stroke: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0'
+                },
+                header: {
+                    stroke: '#31d0c6',
+                    fill: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0',
+                    height: 20
+                },
+                label: {
+                    text: 'Description of person.',
                     fontFamily: 'Roboto Condensed',
                     fontWeight: 'Normal',
                     fontSize: 11,
+                    fill: '#c6c7e2'
+                },
+                headerText: {
+                    text: 'Person name.',
+                    fill: '#ffffff',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 15,
                     strokeWidth: 0,
-                    refY: 12
+                    refY: "50%"
                 }
             }
-        }
+        },
+        //database
+        {
+            type: 'standard.Image',
+            size: { width: 53, height: 42 },
+            attrs: {
+                root: {
+                    dataTooltip: 'Database',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+                image: {
+                    xlinkHref: '../../assets/database.svg'
+                },
+                body: {
+                    fill: 'transparent',
+                    stroke: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0'
+                },
+                header: {
+                    stroke: '#31d0c6',
+                    fill: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0',
+                    height: 20
+                },
+                label: {
+                    text: 'Container name',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 11,
+                    fill: '#c6c7e2'
+                },
+                headerText: {
+                    text: 'Description of storage.',
+                    fill: '#ffffff',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 15,
+                    strokeWidth: 0,
+                    refY: "50%"
+                }
+            }
+        },
+        //External software
+        {
+            type: 'standard.Image',
+            size: { width: 53, height: 42 },
+            attrs: {
+                root: {
+                    dataTooltip: 'External software',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+                image: {
+                    xlinkHref: '../../assets/external-system.svg'
+                },
+                body: {
+                    fill: 'transparent',
+                    stroke: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0'
+                },
+                header: {
+                    stroke: '#31d0c6',
+                    fill: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0',
+                    height: 20
+                },
+                label: {
+                    text: 'Description of external software system.',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 11,
+                    fill: '#c6c7e2'
+                },
+                headerText: {
+                    text: 'External system name.',
+                    fill: '#ffffff',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 15,
+                    strokeWidth: 0,
+                    refY: "50%"
+                }
+            }
+        },
+        //Component name
+        {
+            type: 'standard.Image',
+            size: { width: 53, height: 42 },
+            attrs: {
+                root: {
+                    dataTooltip: 'Component',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+                image: {
+                    xlinkHref: '../../assets/component.svg'
+                },
+                body: {
+                    fill: 'transparent',
+                    stroke: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0'
+                },
+                header: {
+                    stroke: '#31d0c6',
+                    fill: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0',
+                    height: 20
+                },
+                label: {
+                    text: 'Description of component',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 11,
+                    fill: '#c6c7e2'
+                },
+                headerText: {
+                    text: 'Component name.',
+                    fill: '#ffffff',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 15,
+                    strokeWidth: 0,
+                    refY: "50%"
+                }
+            }
+        },
+        //System name
+        {
+            type: 'standard.Image',
+            size: { width: 53, height: 42 },
+            attrs: {
+                root: {
+                    dataTooltip: 'System name',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+                image: {
+                    xlinkHref: '../../assets/system.svg'
+                },
+                body: {
+                    fill: 'transparent',
+                    stroke: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0'
+                },
+                header: {
+                    stroke: '#31d0c6',
+                    fill: '#31d0c6',
+                    strokeWidth: 2,
+                    strokeDasharray: '0',
+                    height: 20
+                },
+                label: {
+                    text: 'Description of sofware system',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 11,
+                    fill: '#c6c7e2'
+                },
+                headerText: {
+                    text: 'System name.',
+                    fill: '#ffffff',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 15,
+                    strokeWidth: 0,
+                    refY: "50%"
+                }
+            }
+        },
+        //System name
+        {
+            type: 'standard.Image',
+            size: { width: 53, height: 42 },
+            attrs: {
+                root: {
+                    dataTooltip: 'System name',
+                    dataTooltipPosition: 'left',
+                    dataTooltipPositionSelector: '.joint-stencil'
+                },
+                image: {
+                    xlinkHref: '../../assets/system-name.svg'
+                },
+                body: {
+                    fill: 'transparent',
+                    stroke: '#333333',
+                    strokeWidth: 2,
+                    strokeDasharray: '0'
+                },
+                header: {
+                    stroke: '#333333',
+                    fill: '#00000000',
+                    strokeWidth: 2,
+                    strokeDasharray: '0',
+                    height: 20
+                },
+                label: {
+                    text: '[Software System]',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 11,
+                    fill: '#333333',
+                    refY: '90%',
+                    refX: "30%"
+                },
+                headerText: {
+                    text: 'System name.',
+                    fill: '#333333',
+                    fontFamily: 'Roboto Condensed',
+                    fontWeight: 'Normal',
+                    fontSize: 14,
+                    strokeWidth: 0,
+                    refY: "85%",
+                    refX: "30%"
+                }
+            }
+        },
+
     ];
+
 
 
 })();

@@ -18,9 +18,7 @@ var App = window.App || {};
     'use strict';
 
     App.MainView = joint.mvc.View.extend({
-
         className: 'app',
-
         events: {
             'mouseup input[type="range"]': 'removeTargetFocus',
             'mousedown': 'removeFocus',
@@ -32,10 +30,8 @@ var App = window.App || {};
         },
 
         removeFocus: function(evt) {
-
             // do not lose focus on right-click
             if (evt.button === 2) return;
-
             // do not lose focus if clicking current element for a second time
             var activeElement = document.activeElement;
             var target = evt.target;
@@ -46,7 +42,6 @@ var App = window.App || {};
         },
 
         init: function() {
-
             this.initializePaper();
             this.initializeStencil();
             this.initializeSelection();
@@ -61,7 +56,6 @@ var App = window.App || {};
         initializePaper: function() {
 
             var graph = this.graph = new joint.dia.Graph;
-
             this.commandManager = new joint.dia.CommandManager({ graph: graph });
 
             var paper = this.paper = new joint.dia.Paper({
@@ -91,82 +85,11 @@ var App = window.App || {};
 
             this.$('.paper-container').append(paperScroller.el);
             paperScroller.render().center();
-            joint.dia.Element.define('custom.Actor', {
-                attrs: {
-                    body: {
-                        refD: 'M150 0 L75 200 L225 200 Z',
-                        strokeWidth: 2,
-                        stroke: '#31d0c6',
-                        fill: {
-                            type: 'linearGradient',
-                            stops: [
-                                {offset: '0%', color: 'rgba(49,208,198)'},
-                                {offset: '100%', color: 'rgba(55,235,223)'},
-                            ]
-                        },
-                        strokeDasharray: '0'
-                    },
-                    titulo: {
-                        textVerticalAnchor: 'middle',
-                        textAnchor: 'middle',
-                        text: 'Titulo',
-                        refX: '50%',
-                        refY: '60%',
-                        fontSize: 30,
-                        fontWeight: 'bold',
-                        fill: '#333333',
-                    },
-                    subtitulo: {
-                        ref: 'Titulo',
-                        textAnchor: 'middle',
-                        text: 'sub-titulo',
-                        refX: '50%',
-                        refY: '100%',
-                        fontSize: 14,
-                        fill: '#333333'
-                    },
-                    contenido: {
-                        ref: 'subtitulo',
-                        textAnchor: 'middle',
-                        text: 'contenido-figura',
-                        refX: '50%',
-                        refY: '180%',
-                        fontSize: 20,
-                        fontFamily: 'Roboto Condense',
-                        fill: '#333333',
-                    },
-                },
 
-            },{
-                markup: [
-                    {
-                        tagName: 'path',
-                        selector: 'body'
-                    },
-                    {
-                        tagName: 'text',
-                        selector: 'subtitulo'
-                    },
-                    {
-                        tagName: 'text',
-                        selector: 'titulo'
-                    },
-                    {
-                        tagName: 'text',
-                        selector: 'contenido'
-                    },
-                ]
-            });
-            var miFigura = new joint.shapes.custom.Actor();
-            miFigura.position(200,200);
-            miFigura.resize(400,400);
-            miFigura.addTo(graph);
-            console.log(miFigura)
         },
 
         // Create and populate stencil.
         initializeStencil: function() {
-
             var stencil = this.stencil = new joint.ui.Stencil({
                 paper: this.paperScroller,
                 snaplines: this.snaplines,

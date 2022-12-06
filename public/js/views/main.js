@@ -90,6 +90,77 @@ var App = window.App || {};
 
             this.$('.paper-container').append(paperScroller.el);
             paperScroller.render().center();
+            joint.dia.Element.define('custom.Actor', {
+                attrs: {
+                    body: {
+                        refD: 'M 142.242 112.069 L 345.69 112.069 L 345.69 312.931 L 142.242 312.931 L 142.242 112.069',
+                        strokeWidth: 2,
+                        stroke: '#31d0c6',
+                        fill: {
+                            type: 'linearGradient',
+                            stops: [
+                                {offset: '0%', color: 'rgba(49,208,198)'},
+                                {offset: '100%', color: 'rgba(55,235,223)'},
+                            ]
+                        },
+                        strokeDasharray: '0'
+                    },
+                    titulo: {
+                        textVerticalAnchor: 'middle',
+                        textAnchor: 'middle',
+                        text: 'Titulo',
+                        refX: '50%',
+                        refY: '60%',
+                        fontSize: 30,
+                        fontWeight: 'bold',
+                        fill: '#333333',
+                    },
+                    subtitulo: {
+                        ref: 'titulo',
+                        textAnchor: 'middle',
+                        text: 'sub-titulo',
+                        refX: '50%',
+                        refY: '100%',
+                        fontSize: 14,
+                        fill: '#333333'
+                    },
+                    contenido: {
+                        ref: 'subtitulo',
+                        textAnchor: 'middle',
+                        text: 'contenido-figura',
+                        refX: '50%',
+                        refY: '180%',
+                        fontSize: 20,
+                        fontFamily: 'Roboto Condense',
+                        fill: '#333333',
+                    },
+                },
+
+            },{
+                markup: [
+                    {
+                        tagName: 'path',
+                        selector: 'body'
+                    },
+                    {
+                        tagName: 'text',
+                        selector: 'subtitulo'
+                    },
+                    {
+                        tagName: 'text',
+                        selector: 'titulo'
+                    },
+                    {
+                        tagName: 'text',
+                        selector: 'contenido'
+                    },
+                ]
+            });
+            var miFigura = new joint.shapes.custom.Actor();
+            miFigura.position(400,400);
+            miFigura.resize(500,500);
+            miFigura.addTo(graph);
+            console.log(graph)
         },
 
         // Create and populate stencil.
