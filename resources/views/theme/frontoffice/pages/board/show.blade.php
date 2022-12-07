@@ -49,7 +49,7 @@
     <script src="{{ asset('js/models/joint.shapes.app.js') }}"></script>
     <script src="{{ asset('js/views/navigator.js') }}"></script>
     <script>
-        joint.setTheme('modern');
+        joint.setTheme('material');
         app = new App.MainView({
             el: '#app'
         });

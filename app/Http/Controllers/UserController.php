@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         //$this->authorize('index', User::class);
         return view('theme.backoffice.pages.user.index',[
-            'user'=> auth()->user()->visible_users(),
+            'users'=> auth()->user()->visible_users(),
         ]);
     }
 
