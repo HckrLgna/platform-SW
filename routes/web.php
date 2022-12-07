@@ -60,13 +60,10 @@ Route::group(['middleware' => ['auth'],'as' => 'frontoffice.'],function (){
     Route::post('board/user/{user}/permission_assignment','App\Http\Controllers\BoardController@permission_assignment')
         ->name('board.user.permission_assignment');
 
-
-
-    Route::get('add-user-board/{role_id?}/{board_id?}/send','App\Http\Controllers\BoardController@addUserBoard')->name('board.add-user');
     Route::post('send-invitation/{board}/','App\Http\Controllers\SendInvitationController@enviar')->name('send-invitation');
 
 });
-
+Route::get('add-user-board/{role_id?}/{board_id?}/send','App\Http\Controllers\BoardController@addUserBoard')->name('board.add-user');
 Route::get('auth/user', function () {
     if(auth()->check()){
         return response()->json([
