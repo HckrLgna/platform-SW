@@ -1,5 +1,5 @@
 @extends('theme.frontoffice.layouts.admin')
-@section('title','pagina demo')
+@section('title','Chat')
 @section('head')
     <meta charset="UTF-8">
     <title>CodePen - Simple Chat UI</title>

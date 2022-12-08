@@ -48,7 +48,8 @@ function enviar(){
     }).then(res => {
         console.log('enviado');
     }).catch(error => {
-        console.log(error);
+        window.alert('No tiene permisos para editar');
+        location.reload();
     });
 }
 

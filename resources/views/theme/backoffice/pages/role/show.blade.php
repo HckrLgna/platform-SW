@@ -1,5 +1,5 @@
 @extends('theme.backoffice.layouts.admin')
-@section('title','pagina demo')
+@section('title','Roles del sistema')
 @section('head')
 @endsection
 @section('breadcrumbs')

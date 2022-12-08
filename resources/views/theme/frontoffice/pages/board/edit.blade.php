@@ -1,5 +1,5 @@
 @extends('theme.frontoffice.layouts.admin')
-@section('title','pagina demo')
+@section('title','Board')
 @section('head')
 @endsection
 @section('breadcrumbs')

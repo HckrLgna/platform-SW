@@ -24,7 +24,9 @@ class ModelController extends Controller
     public function sent(Request $request)
     {
         $board = Board::find($request->board_id);
+
         $this->authorize('sent',$board);
+
         $board_id = $board->id;
         $model_id = DB::table('models')
             ->where('board_id','=',$board_id)

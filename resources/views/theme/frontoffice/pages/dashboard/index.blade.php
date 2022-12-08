@@ -1,5 +1,5 @@
 @extends('theme.frontoffice.layouts.admin')
-@section('title','pagina demo')
+@section('title','Chat')
 @section('head')
     <link rel="stylesheet" href="{{asset('css/chat.css')}} ">
 @endsection

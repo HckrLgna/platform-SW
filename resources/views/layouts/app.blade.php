@@ -38,8 +38,8 @@
                             </li>
                         </ul>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="http://127.0.0.1:8000/login" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
-                            <li><a href="http://127.0.0.1:8000/register" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
+                            <li><a href="{{route('login')}}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
+                            <li><a href="{{route('register')}}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
                         </ul>
                     </div>
                 </nav>
