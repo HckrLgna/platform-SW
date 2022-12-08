@@ -546,13 +546,6 @@ var App = window.App || {};
 
             var paper = this.paper;
             paper.hideTools().toSVG(function(svg) {
-               /* new joint.ui.Lightbox({
-                    image: 'data:image/svg+xml,' + encodeURIComponent(svg),
-                    downloadable: true,
-                    fileName: 'Rappid'
-                }).open();
-                paper.showTools();
-                */
                 joint.util.downloadDataUri(`data:image/svg+xml,${encodeURIComponent(svg)}`, "diagramita.svg");
             }, {
                 preserveDimensions: true,
@@ -566,14 +559,6 @@ var App = window.App || {};
 
             var paper = this.paper;
             paper.hideTools().toPNG(function(dataURL) {
-                /*
-                new joint.ui.Lightbox({
-                    image: dataURL,
-                    downloadable: true,
-                    fileName: 'Rappid'
-                }).open();
-                paper.showTools();
-                */
                 joint.util.downloadDataUri(dataURL, "diagramita.png");
             }, {
                 padding: 10,
