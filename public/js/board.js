@@ -48,8 +48,7 @@ function enviar(){
     }).then(res => {
         console.log('enviado');
     }).catch(error => {
-        window.alert('No tiene permisos para editar');
-        location.reload();
+       error()
     });
 }
 
@@ -63,7 +62,10 @@ function appendGraphs(code){
     var objeto = JSON.parse(code);
     app.graph.fromJSON(objeto);
 }
-
+function error(){
+    window.alert('No tiene permisos para editar');
+    location.reload();
+}
 function get(selector, root = document) {
     return root.querySelector(selector);
 }
